@@ -5,12 +5,14 @@ Referensi utama: *Kurose & Ross, Computer Networking: A Top-Down Approach (8th E
 
 ---
 
-## 📖 Konten Pembelajaran
+## 📖 Fitur Utama
 
 File interaktif utama adalah [**`Jarkom — Belajar UTS.html`**](Jarkom%20%E2%80%94%20Belajar%20UTS.html).
-- **100% Offline & Standalone:** Dapat dibuka langsung di peramban web (browser) apa pun tanpa membutuhkan koneksi internet atau library eksternal.
-- **Dark Mode Native:** Tampilan minimalis berlatar hitam yang nyaman untuk sesi belajar panjang.
-- **28 Diagram SVG Responsif:** Ilustrasi vektor mendalam untuk mempermudah pemahaman konsep abstrak jaringan.
+- **100% Offline & Standalone:** Dapat dibuka langsung di browser apa pun tanpa ketergantungan koneksi internet atau library eksternal.
+- **Dark Mode Native:** Tampilan minimalis berlatar gelap yang nyaman untuk sesi belajar panjang.
+- **33 Diagram SVG Responsif:** 28 diagram materi + 5 diagram latihan soal (TCP Reno cwnd, TCP Seq/ACK timeline, Subnet Router R2, Graf 7 Node Dijkstra, Tabel VLSM).
+- **Tab Materi (W01–W08):** Ringkasan materi komprehensif, analogi, formula, dan tabel perbandingan.
+- **Tab Soal (Bank Soal Asli SCELE):** Lebih dari 55 butir soal kuis asli Fasilkom UI (Gasal 2021/2022, Gasal 2022/2023, dan 2023) lengkap dengan kunci jawaban resmi, pembahasan langkah-demi-langkah, analisis jebakan ujian, dan filter kategori interaktif.
 
 ---
 
@@ -26,6 +28,23 @@ File interaktif utama adalah [**`Jarkom — Belajar UTS.html`**](Jarkom%20%E2%80
 | **W06** | **Network Layer Data Plane & Subnetting** | Forwarding (data plane) vs Routing (control plane), model Best Effort, arsitektur internal router (input ports, switching fabric memory/bus/crossbar, output buffer), Longest Prefix Match via TCAM, packet scheduling (FIFO, Priority, RR, WFQ), IPv4 header, IPv6 header fixed 40 byte, tunneling IPv6 over IPv4, serta perhitungan subnetting FLSM & VLSM terurut. |
 | **W07** | **DHCP, NAT, Middleboxes & IP Architecture** | Aturan penyingkatan IPv6 (RFC 5952), protokol DHCP 4 tahap (DORA broadcast), alokasi IP hierarkis & route aggregation, NAT (Network Address Translation) & rewriting port 16-bit, Generalized Forwarding OpenFlow match-plus-action, Middleboxes, arsitektur Internet Hourglass (IP thin waist), dan fragmentasi datagram IPv4. |
 | **W08** | **Network Layer Control Plane** | Abstraksi pemodelan graf, algoritma Link-State (Dijkstra) vs Distance-Vector (Bellman-Ford), routing hierarki Autonomous System (AS), protokol intra-AS OSPF (Area 0 Backbone & ABR/ASBR), protokol inter-AS BGP (eBGP, iBGP, AS-PATH loop prevention, hot-potato routing), arsitektur SDN 3-tier (Northbound REST & Southbound OpenFlow), diagnosa jalur ICMP & Traceroute, serta evolusi manajemen jaringan SNMP/MIB menuju NETCONF/YANG. |
+
+---
+
+## 🎯 Bank Soal & Pembahasan Kuis / UTS
+
+Tab **Soal** di dalam aplikasi web memuat kategori:
+1. **Hitungan & Kasus Analitis:**
+   - Delay antrian (queuing delay) pada berbagai variasi rate & sisa bit buffer.
+   - Delay end-to-end multi-hop dengan store-and-forward, transmisi, propagasi, dan processing delay.
+   - Skenario fragmentasi IP: jumlah fragmen, ukuran fragmen pertama, dan jebakan ukuran fragmen terakhir (Header 20 B + sisa data).
+   - Penelusuran Sequence Number & ACK Number pada paket TCP yang hilang serta retransmisi setelah timeout.
+   - Perhitungan throughput rata-rata TCP Reno pada fase congestion avoidance & fast recovery.
+   - Studi kasus nyata Subnetting VLSM 4 departemen menyisakan blok kontigu terpanjang.
+   - Tabel langkah-demi-langkah algoritma Dijkstra 7 node lengkap dengan aturan tie-break (pilih simpul paling kiri).
+   - Penentuan interface keluar (forwarding lookup) pada router multi-subnet.
+2. **Soal Konseptual & True/False:**
+   - 45+ pertanyaan konseptual mencakup karakteristik P2P, BitTorrent choking, HTTP methods & status code, conditional GET, Web cache, DNS hierarchy & resource records, socket architecture (UDP vs TCP), SMTP commands & ports, model jam pasir IP, dan SDN OpenFlow rules.
 
 ---
 
