@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/Jarkom — Belajar UTS.html"
+    }
+  ]
+}
