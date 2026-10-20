@@ -4983,13 +4983,8 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
   <section class="block exam-hide" id="filterBlock">
     <h2>Filter Soal</h2>
 
-    <!-- HIGHLIGHT 107 SOAL PRIORITAS UTAMA (FILTER UTAMA) -->
-    <div id="prioWrap" class="prio-card" hidden>
-      <div class="prio-card-header">
-        <span class="prio-title">⭐ 107 Soal Prioritas Utama</span>
-        <span class="prio-tag">Wajib UTS</span>
-      </div>
-      <p class="prio-desc">Kompilasi 107 soal terpenting &amp; paling sering keluar dari kuis SCELE serta arsip UTS. Kuasai soal-soal ini terlebih dahulu!</p>
+    <!-- 107 SOAL PRIORITAS (FILTER UTAMA) -->
+    <div id="prioWrap" style="margin-bottom:14px;" hidden>
       <div class="chips" id="fPrio"></div>
       <div id="prioBreak" class="prio-break" hidden></div>
     </div>
@@ -5278,9 +5273,7 @@ function renderFilters(){
   const np=DATA.questions.filter(q=>q.priority!=null).length;$("prioWrap").hidden=!np;
   if(np){
     const activeCount=matching("prios").filter(q=>q.priority!=null).length;
-    const isPrioActive=st.prios.has("p");
-    const prioLabel=isPrioActive?"✓ 107 Soal Prioritas Aktif":"⭐ Tampilkan 107 Soal Prioritas";
-    chipGroup($("fPrio"),[["p",prioLabel,activeCount]],st.prios);
+    chipGroup($("fPrio"),[["p","⭐ Tampilkan 107 Soal Prioritas",activeCount]],st.prios);
   }
   /* Breakdown of the whole priority set by source document: how many of the set each source gives, and how much of that source made it in. Counted on the whole bank, not on the other filters, so the numbers stay put while you filter. */
   const pb=$("prioBreak");pb.hidden=!(np&&st.prios.size);
