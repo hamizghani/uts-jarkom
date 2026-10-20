@@ -86,7 +86,6 @@ pre.diag{background:#0a0a0a;border:1px solid var(--dim);padding:14px;overflow-x:
 <li><a href="#s3">Network core</a></li>
 <li><a href="#s4">Performance: delay, loss, throughput</a></li>
 <li><a href="#s5">Layering, encapsulation, dan security</a></li>
-<li><a href="#w1-kuis" style="color:#38bdf8;font-weight:600;">📝 Latihan Soal Kuis W01 (Asli SCELE UI)</a></li>
 </ol>
 
 <hr>
@@ -409,98 +408,7 @@ pre.diag{background:#0a0a0a;border:1px solid var(--dim);padding:14px;overflow-x:
 <li>Throughput = bottleneck; 5 layer; message → segment → datagram → frame.</li>
 </ul>
 
-<hr>
-<div class="box" id="w1-kuis" style="border-left:4px solid #38bdf8;background:#111827;margin-top:28px;padding:20px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-    <h3 style="margin:0;color:#38bdf8;font-size:1.15rem;">📝 Latihan Soal Kuis W01 (Asli SCELE UI)</h3>
-    <span class="meta" style="color:#38bdf8;background:#0f172a;padding:3px 8px;border-radius:4px;border:1px solid #1e293b;">5 Soal Latihan Langsung</span>
-  </div>
-  <p class="meta" style="color:#94a3b8;margin-bottom:18px;">Soal hitungan delay nodal (queuing, transmission, propagation), perbandingan packet switching vs circuit switching, dan analisis throughput bottleneck. Klik <em>Lihat Kunci &amp; Pembahasan</em> untuk menampilkan solusi resmi dan analisis jebakan.</p>
 
-  <div class="box q-inline qc-calc qc-w1" id="inline-soal-1">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #1</span>
-    <span class="meta" style="color:#38bdf8;">[W01] &bull; Hitungan Numerik</span>
-  </div>
-  <p>Ketika sebuah paket tiba di router, ada <strong>1 paket yang baru setengahnya terkirim</strong> dan <strong>4 paket lainnya sedang mengantri</strong> di buffer. Paket dikirimkan berdasarkan urutan antrian (FIFO). Anggap semua paket berukuran <strong>1 KByte</strong> dan rate transmisi adalah <strong>2 Mbps</strong>.<br>Hitung <strong>delay antrian (queuing delay)</strong> dari paket yang baru datang tersebut (dalam satuan detik atau second)!<br><span class="meta">Asumsi: 1 KByte = 1000 Byte, 1 Mbit = 10⁶ bit.</span></p>
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>0.018</code></p>
-      <p><strong>Pembahasan:</strong> Total paket di depan paket yang baru datang adalah 0,5 (paket yang sedang diproses setengah jalan) + 4 (paket mengantri utuh) = <strong>4,5 paket</strong>.<br>Total bit yang harus dituntaskan router = $4{,}5 \times 1000\text{ Byte} \times 8\text{ bit/Byte} = 36.000\text{ bit}$.<br>Rate link $R = 2\text{ Mbps} = 2.000.000\text{ bit/detik}$.<br>$$d_{queue} = \frac{\text{Total Bit}}{R} = \frac{36.000}{2.000.000} = \mathbf{0{,}018\text{ detik (18 ms)}}.$$</p><p class="meta" style="color:#fbbf24;margin-top:6px;"><strong>⚠️ Jebakan &amp; Catatan Ujian:</strong> Jangan lupa mengalikan ukuran Byte ke bit (× 8)! Dan hitung paket yang baru setengah terkirim sebagai 0,5.</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-calc qc-w1" id="inline-soal-2">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #2</span>
-    <span class="meta" style="color:#38bdf8;">[W01] &bull; Hitungan Numerik</span>
-  </div>
-  <p>Ketika sebuah paket tiba di router, ada 1 paket yang baru setengahnya terkirim dan 4 paket lainnya sedang mengantri di buffer. Anggap semua paket berukuran <strong>1 KByte</strong> dan rate transmisi adalah <strong>1 Mbps</strong>.<br>Hitung delay antrian (queuing delay) dari paket yang baru datang tersebut (dalam satuan detik)!</p>
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>0.036</code></p>
-      <p><strong>Pembahasan:</strong> Total beban antrian di depan = $4{,}5 \times 1000 \times 8 = 36.000\text{ bit}$.<br>Rate link $R = 1\text{ Mbps} = 1.000.000\text{ bit/s}$.<br>$$d_{queue} = \frac{36.000}{1.000.000} = \mathbf{0{,}036\text{ detik (36 ms)}}.$$</p><p class="meta" style="color:#fbbf24;margin-top:6px;"><strong>⚠️ Jebakan &amp; Catatan Ujian:</strong> Pada rate 1 Mbps, delay tepat dua kali lipat lebih lama daripada rate 2 Mbps (0,036 vs 0,018).</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-calc qc-w1" id="inline-soal-3">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #3</span>
-    <span class="meta" style="color:#38bdf8;">[W01] &bull; Hitungan Numerik</span>
-  </div>
-  <p>Host A dan Host B dihubungkan oleh <strong>2 link</strong> yang masing-masing berjarak <strong>200 km</strong> dan <strong>400 km</strong>. Kedua link ini dihubungkan oleh sebuah packet switch di mana <strong>delay processing pada packet switch adalah 1 msec</strong> dan <strong>transmission rate pada tiap link sebesar 1 Mbit/s</strong>. Asumsi tidak ada queueing delay dan kecepatan propagasi pada kedua link adalah $2 \times 10^8\text{ m/s}$. Berapakah <strong>end-to-end delay</strong> ketika Host A mengirim sebuah paket berukuran <strong>2 KByte</strong> ke Host B (dalam satuan detik)?<br><span class="meta">Asumsi: 1 KByte = 1000 Byte, 1 Mbit = 1000 Kbit = 10⁶ bit.</span></p>
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>0.036</code></p>
-      <p><strong>Pembahasan:</strong> Komponen delay end-to-end:<br>1. <strong>Transmission delay ($d_{trans}$):</strong> Paket harus ditransmisikan 2 kali (sekali oleh Host A, sekali oleh Switch).<br>$$d_{trans} = \frac{L}{R} = \frac{2000 \times 8}{1.000.000} = \frac{16.000}{1.000.000} = 0{,}016\text{ s per link}.$$Untuk 2 link: $2 \times 0{,}016 = \mathbf{0{,}032\text{ s}}$.<br>2. <strong>Propagation delay ($d_{prop}$):</strong><br>• Link 1 (200 km): $\frac{200.000\text{ m}}{2 \times 10^8\text{ m/s}} = 0{,}001\text{ s} = 1\text{ ms}$.<br>• Link 2 (400 km): $\frac{400.000\text{ m}}{2 \times 10^8\text{ m/s}} = 0{,}002\text{ s} = 2\text{ ms}$.<br>Total $d_{prop} = 0{,}001 + 0{,}002 = \mathbf{0{,}003\text{ s}}$.<br>3. <strong>Processing delay ($d_{proc}$):</strong> $1\text{ ms} = \mathbf{0{,}001\text{ s}}$.<br>4. <strong>Total Delay End-to-End:</strong><br>$$d_{end-end} = 2(d_{trans}) + d_{prop1} + d_{prop2} + d_{proc} = 0{,}032 + 0{,}003 + 0{,}001 = \mathbf{0{,}036\text{ detik}}.$$</p><p class="meta" style="color:#fbbf24;margin-top:6px;"><strong>⚠️ Jebakan &amp; Catatan Ujian:</strong> Banyak yang lupa bahwa paket beroperasi secara store-and-forward, sehingga transmission delay $L/R$ terjadi di SETIAP hop link (2 kali).</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-w1" id="inline-soal-13">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #13</span>
-    <span class="meta" style="color:#38bdf8;">[W01] &bull; Pilihan Ganda</span>
-  </div>
-  <p>Packet switching was invented in?</p><ul class="q-opt">
-  <li class="correct">a. 1960s <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-  <li>b. 1990s</li>
-  <li>c. 1980s</li>
-  <li>d. 2000s</li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>a. 1960s</code></p>
-      <p><strong>Pembahasan:</strong> Konsep packet switching dikembangkan oleh Paul Baran dan Donald Davies pada awal 1960-an; ARPANET pertama online tahun 1969.</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-w1" id="inline-soal-14">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #14</span>
-    <span class="meta" style="color:#38bdf8;">[W01] &bull; Pilihan Ganda</span>
-  </div>
-  <p>Jenis topologi jaringan yang memiliki hierarki antara hub pusat dengan end system adalah:</p><ul class="q-opt">
-  <li>a. Star</li>
-  <li>b. Mesh</li>
-  <li>c. Bus</li>
-  <li class="correct">d. Tree <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>d. Tree</code></p>
-      <p><strong>Pembahasan:</strong> Topologi Tree memiliki struktur bertingkat (hierarki) dengan simpul akar (root hub) yang membawahi hub perantara hingga ke daun (end system).</p>
-    </div>
-  </details>
-</div>
-
-  <div style="margin-top:18px;padding-top:14px;border-top:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span class="meta" style="color:#cbd5e1;">Tersedia total <strong>20 soal W01</strong> di Bank Soal interaktif lengkap dengan filter topik.</span>
-    <button class="btn" style="background:#38bdf8;color:#000;font-weight:700;padding:6px 14px;cursor:pointer;" onclick="show('soal'); filterQuiz('w1');">Buka Seluruh 20 Soal di Bank Soal &rarr;</button>
-  </div>
-</div>
 
 </div>
 
@@ -515,7 +423,6 @@ pre.diag{background:#0a0a0a;border:1px solid var(--dim);padding:14px;overflow-x:
 <li><a href="#w2s4">Format pesan HTTP, cookies, dan web caching</a></li>
 <li><a href="#w2s5">Evolusi HTTP: HTTP/2 dan pengantar HTTP/3</a></li>
 <li><a href="#w2s6">DNS (Domain Name System)</a></li>
-<li><a href="#w2-kuis" style="color:#38bdf8;font-weight:600;">📝 Latihan Soal Kuis W02 (Asli SCELE UI)</a></li>
 </ol>
 
 <hr>
@@ -952,92 +859,7 @@ pre.diag{background:#0a0a0a;border:1px solid var(--dim);padding:14px;overflow-x:
 <li>DNS adalah database terdistribusi hierarkis (Root, TLD, Authoritative) dengan record A, NS, CNAME, MX. Resolusi iterated menjaga beban server root tetap ringan.</li>
 </ul>
 
-<hr>
-<div class="box" id="w2-kuis" style="border-left:4px solid #38bdf8;background:#111827;margin-top:28px;padding:20px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-    <h3 style="margin:0;color:#38bdf8;font-size:1.15rem;">📝 Latihan Soal Kuis W02 (Asli SCELE UI)</h3>
-    <span class="meta" style="color:#38bdf8;background:#0f172a;padding:3px 8px;border-radius:4px;border:1px solid #1e293b;">4 Soal Latihan Langsung</span>
-  </div>
-  <p class="meta" style="color:#94a3b8;margin-bottom:18px;">Soal komputasi waktu distribusi file P2P vs Client-Server, socket API (TCP vs UDP), record database DNS, dan mekanisme choking BitTorrent. Klik <em>Lihat Kunci &amp; Pembahasan</em> untuk menampilkan solusi resmi dan analisis jebakan.</p>
 
-  <div class="box q-inline qc-w1" id="inline-soal-11">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #11</span>
-    <span class="meta" style="color:#38bdf8;">[W01] &bull; Matching Istilah</span>
-  </div>
-  <p>Pasangkan pernyataan-pernyataan berikut dengan istilah protokol/layer yang tepat:<br>1. Salah satu protokol pada application layer<br>2. Layer yang bertanggung jawab untuk mengatur akses terhadap medium serta jaringan lokal<br>3. Layer yang bertanggung jawab untuk menentukan rute paket dari pengirim sampai penerima<br>4. Proses yang dilakukan pada penerima setelah menerima paket dengan membuka header-header mulai dari layer link sampai layer aplikasi<br>5. Sebutan untuk paket pada network layer yang terdiri atas segment yang dibungkus oleh header network layer<br>6. Salah satu protokol pada transport layer</p><ul class="q-opt">
-  <li class="correct">1 → SMTP, 2 → Link, 3 → Network, 4 → Decapsulation, 5 → Datagram, 6 → UDP <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>1→SMTP, 2→Link, 3→Network, 4→Decapsulation, 5→Datagram, 6→UDP</code></p>
-      <p><strong>Pembahasan:</strong> • Application: SMTP, HTTP, DNS.<br>• Link: Ethernet, Wi-Fi.<br>• Network: IP, OSPF, penentu rute (routing).<br>• Decapsulation: proses melepas header di receiver.<br>• PDU Network Layer: Datagram.<br>• Transport: TCP, UDP.</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-w1" id="inline-soal-12">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #12</span>
-    <span class="meta" style="color:#38bdf8;">[W01] &bull; Pilihan Ganda</span>
-  </div>
-  <p>Teknologi akses internet pada edge network yang memanfaatkan infrastruktur <strong>jaringan telepon</strong> adalah:</p><ul class="q-opt">
-  <li>a. FTTH</li>
-  <li>b. Cable network</li>
-  <li class="correct">c. DSL <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-  <li>d. Ethernet</li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>c. DSL</code></p>
-      <p><strong>Pembahasan:</strong> DSL (Digital Subscriber Line) menggunakan kabel tembaga telepon eksisting dengan pembagian frekuensi suara (&lt;4 kHz) dan data.</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-w2" id="inline-soal-28">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #28</span>
-    <span class="meta" style="color:#38bdf8;">[W02] &bull; Pilihan Ganda</span>
-  </div>
-  <p>DNS database contains _______</p><ul class="q-opt">
-  <li class="correct">a. All the options are true <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-  <li>b. Name server records</li>
-  <li>c. Hostname-to-address records</li>
-  <li>d. Hostname aliases</li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>a. All the options are true</code></p>
-      <p><strong>Pembahasan:</strong> Database DNS memuat record A (hostname-ke-IP), NS (name server), CNAME (alias kanonikal), dan MX (mail server).</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-w2" id="inline-soal-30">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #30</span>
-    <span class="meta" style="color:#38bdf8;">[W02] &bull; Benar / Salah</span>
-  </div>
-  <p>The choking mechanism is a tit-for-tat incentive scheme for the peers within the torrent.</p><ul class="q-opt">
-  <li class="correct">True <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-  <li>False</li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>True</code></p>
-      <p><strong>Pembahasan:</strong> Choking mechanism di BitTorrent memberikan jatah upload tertinggi ke 4 peer yang memberikan laju download tertinggi (tit-for-tat).</p>
-    </div>
-  </details>
-</div>
-
-  <div style="margin-top:18px;padding-top:14px;border-top:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span class="meta" style="color:#cbd5e1;">Tersedia total <strong>18 soal W02</strong> di Bank Soal interaktif lengkap dengan filter topik.</span>
-    <button class="btn" style="background:#38bdf8;color:#000;font-weight:700;padding:6px 14px;cursor:pointer;" onclick="show('soal'); filterQuiz('w2');">Buka Seluruh 18 Soal di Bank Soal &rarr;</button>
-  </div>
-</div>
 
 </div>
 <div class="wk" id="w3" hidden>
@@ -1051,7 +873,6 @@ pre.diag{background:#0a0a0a;border:1px solid var(--dim);padding:14px;overflow-x:
 <li><a href="#w3s4">Transport layer: prinsip dan layanan</a></li>
 <li><a href="#w3s5">Multiplexing dan demultiplexing</a></li>
 <li><a href="#w3s6">Protokol UDP dan Internet checksum</a></li>
-<li><a href="#w3-kuis" style="color:#38bdf8;font-weight:600;">📝 Latihan Soal Kuis W03 (Asli SCELE UI)</a></li>
 </ol>
 
 <hr>
@@ -1466,51 +1287,7 @@ pre.diag{background:#0a0a0a;border:1px solid var(--dim);padding:14px;overflow-x:
 <li>UDP adalah protokol connectionless, best-effort, dengan header ramping 8 byte. Checksum dihitung dari 1's complement sum 16-bit dengan wraparound, namun memiliki kelemahan terhadap error yang saling meniadakan.</li>
 </ul>
 
-<hr>
-<div class="box" id="w3-kuis" style="border-left:4px solid #38bdf8;background:#111827;margin-top:28px;padding:20px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-    <h3 style="margin:0;color:#38bdf8;font-size:1.15rem;">📝 Latihan Soal Kuis W03 (Asli SCELE UI)</h3>
-    <span class="meta" style="color:#38bdf8;background:#0f172a;padding:3px 8px;border-radius:4px;border:1px solid #1e293b;">2 Soal Latihan Langsung</span>
-  </div>
-  <p class="meta" style="color:#94a3b8;margin-bottom:18px;">Soal web caching dan conditional GET (If-modified-since 304 Not Modified) serta query konkurensi server DNS. Klik <em>Lihat Kunci &amp; Pembahasan</em> untuk menampilkan solusi resmi dan analisis jebakan.</p>
 
-  <div class="box q-inline qc-w2" id="inline-soal-42">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #42</span>
-    <span class="meta" style="color:#38bdf8;">[W03] &bull; Benar / Salah</span>
-  </div>
-  <p>Salah satu cara untuk mencocokkan waktu pada saat melakukan streaming video adalah dengan melakukan inisialisasi protokol SIP (Session Initialization Protocol).</p><ul class="q-opt">
-  <li>True</li>
-  <li class="correct">False <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>False</code></p>
-      <p><strong>Pembahasan:</strong> SIP digunakan untuk signaling dan inisiasi sesi panggilan multimedia/VoIP, bukan untuk sinkronisasi waktu pemutaran video streaming (yang ditangani oleh buffer dan timestamp RTP/DASH).</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-w4" id="inline-soal-53">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #53</span>
-    <span class="meta" style="color:#38bdf8;">[W03] &bull; Isian Singkat</span>
-  </div>
-  <p>Sebuah server DNS melayani DNS query dari <strong>5 client</strong>. Maka jumlah socket yang dibuat oleh server DNS untuk melayani query dari para client tersebut sebanyak:</p>
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>1</code></p>
-      <p><strong>Pembahasan:</strong> DNS berjalan di atas <strong>UDP</strong> (connectionless). Server UDP tidak membuat koneksi individual untuk tiap client; seluruh query dari client mana pun diterima dan diproses melalui <strong>satu socket UDP yang sama</strong> pada port 53.</p>
-    </div>
-  </details>
-</div>
-
-  <div style="margin-top:18px;padding-top:14px;border-top:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span class="meta" style="color:#cbd5e1;">Tersedia total <strong>2 soal W03</strong> di Bank Soal interaktif lengkap dengan filter topik.</span>
-    <button class="btn" style="background:#38bdf8;color:#000;font-weight:700;padding:6px 14px;cursor:pointer;" onclick="show('soal'); filterQuiz('w2');">Buka Seluruh 2 Soal di Bank Soal &rarr;</button>
-  </div>
-</div>
 
 </div>
 <div class="wk" id="w4" hidden>
@@ -1524,7 +1301,6 @@ pre.diag{background:#0a0a0a;border:1px solid var(--dim);padding:14px;overflow-x:
 <li><a href="#w4s4">TCP RTT dan Timeout Interval</a></li>
 <li><a href="#w4s5">Reliable data transfer dan skenario retransmisi TCP</a></li>
 <li><a href="#w4s6">Fast retransmit, flow control, dan congestion control</a></li>
-<li><a href="#w4-kuis" style="color:#38bdf8;font-weight:600;">📝 Latihan Soal Kuis W04 (Asli SCELE UI)</a></li>
 </ol>
 
 <hr>
@@ -1948,59 +1724,7 @@ while True:
 <li>Fast Retransmit dipicu oleh 3 duplicate ACKs (triple duplicate ACK). Flow control diatur oleh <code>rwnd</code>; Congestion control diatur oleh <code>cwnd</code>.</li>
 </ul>
 
-<hr>
-<div class="box" id="w4-kuis" style="border-left:4px solid #38bdf8;background:#111827;margin-top:28px;padding:20px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-    <h3 style="margin:0;color:#38bdf8;font-size:1.15rem;">📝 Latihan Soal Kuis W04 (Asli SCELE UI)</h3>
-    <span class="meta" style="color:#38bdf8;background:#0f172a;padding:3px 8px;border-radius:4px;border:1px solid #1e293b;">2 Soal Latihan Langsung</span>
-  </div>
-  <p class="meta" style="color:#94a3b8;margin-bottom:18px;">Soal demultiplexing UDP (2-tuple IP & Port), connectionless transport, dan perbandingan transport vs network layer. Klik <em>Lihat Kunci &amp; Pembahasan</em> untuk menampilkan solusi resmi dan analisis jebakan.</p>
 
-  <div class="box q-inline qc-w1" id="inline-soal-15">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #15</span>
-    <span class="meta" style="color:#38bdf8;">[W01] &bull; Pilihan Ganda</span>
-  </div>
-  <p>Salah satu perangkat yang dapat digunakan untuk membagi konektivitas antar end-device di dalam <strong>jaringan lokal</strong> adalah:</p><ul class="q-opt">
-  <li>a. Amplifier</li>
-  <li class="correct">b. Switch <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-  <li>c. Modem</li>
-  <li>d. Router</li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>b. Switch</code></p>
-      <p><strong>Pembahasan:</strong> Switch beroperasi di Layer 2 menghubungkan host-host di LAN yang sama. Router menghubungkan antar jaringan berbeda (Layer 3).</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-w1" id="inline-soal-16">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #16</span>
-    <span class="meta" style="color:#38bdf8;">[W01] &bull; Pilihan Ganda</span>
-  </div>
-  <p>Jenis topologi jaringan dimana setiap node terhubung ke sebuah hub pusat adalah:</p><ul class="q-opt">
-  <li>a. Ring</li>
-  <li>b. Mesh</li>
-  <li>c. Bus</li>
-  <li class="correct">d. Star <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>d. Star</code></p>
-      <p><strong>Pembahasan:</strong> Pada topologi Star, semua simpul terhubung langsung ke satu titik sentral (hub/switch).</p>
-    </div>
-  </details>
-</div>
-
-  <div style="margin-top:18px;padding-top:14px;border-top:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span class="meta" style="color:#cbd5e1;">Tersedia total <strong>4 soal W04</strong> di Bank Soal interaktif lengkap dengan filter topik.</span>
-    <button class="btn" style="background:#38bdf8;color:#000;font-weight:700;padding:6px 14px;cursor:pointer;" onclick="show('soal'); filterQuiz('w4');">Buka Seluruh 4 Soal di Bank Soal &rarr;</button>
-  </div>
-</div>
 
 </div>
 <div class="wk" id="w5" hidden>
@@ -2014,7 +1738,6 @@ while True:
 <li><a href="#w5s4">Handshake QUIC, 0-RTT, dan evaluasi performa</a></li>
 <li><a href="#w5s5">Media over QUIC (MoQ)</a></li>
 <li><a href="#w5s6">Persiapan webserver untuk QUIC dan HTTP/3</a></li>
-<li><a href="#w5-kuis" style="color:#38bdf8;font-weight:600;">📝 Latihan Soal Kuis W05 (Asli SCELE UI)</a></li>
 </ol>
 
 <hr>
@@ -2383,204 +2106,7 @@ while True:
 <li>Media over QUIC (MoQ) menggabungkan latensi ultra-rendah RTP dengan skalabilitas fan-out CDN. Penerapan webserver membutuhkan TLS 1.3, pembukaan port UDP 443, dan header <code>Alt-Svc</code>.</li>
 </ul>
 
-<hr>
-<div class="box" id="w5-kuis" style="border-left:4px solid #38bdf8;background:#111827;margin-top:28px;padding:20px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-    <h3 style="margin:0;color:#38bdf8;font-size:1.15rem;">📝 Latihan Soal Kuis W05 (Asli SCELE UI)</h3>
-    <span class="meta" style="color:#38bdf8;background:#0f172a;padding:3px 8px;border-radius:4px;border:1px solid #1e293b;">3 Soal Latihan Langsung</span>
-  </div>
-  <p class="meta" style="color:#94a3b8;margin-bottom:18px;">Soal komputasi Sequence & ACK number TCP (loss & timeout), cumulative ACK, dan evaluasi kurva cwnd TCP Reno (RTT 12-16) lengkap dengan diagram SVG. Klik <em>Lihat Kunci &amp; Pembahasan</em> untuk menampilkan solusi resmi dan analisis jebakan.</p>
 
-  <div class="box q-inline qc-calc qc-w4" id="inline-soal-5">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #5</span>
-    <span class="meta" style="color:#38bdf8;">[W04] &bull; Skenario Retransmisi TCP</span>
-  </div>
-  <p>Host A mengirimkan serangkaian segmen TCP ke host B dengan pola seperti diagram di bawah. Segmen yang dikirimkan oleh host A semua memiliki ukuran yang sama, yaitu <strong>20 byte</strong>, dan sequence number awal (pada nomor 1) adalah <strong>120</strong>. Tentukan nilai sequence number dan ACK number pada segmen 1 s.d. 7!</p>
-<div class="diag">
-<svg viewBox="0 0 680 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <marker id="arr-sq" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#94a3b8"/>
-    </marker>
-  </defs>
-
-  <!-- Lifelines -->
-  <line x1="120" y1="30" x2="120" y2="200" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3"/>
-  <line x1="560" y1="30" x2="560" y2="200" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3"/>
-  <text x="120" y="20" fill="#38bdf8" font-size="10.5" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">Host A (Pengirim)</text>
-  <text x="560" y="20" fill="#4ade80" font-size="10.5" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">Host B (Penerima)</text>
-
-  <!-- Seg 1: OK -->
-  <line x1="120" y1="45" x2="560" y2="65" stroke="#38bdf8" stroke-width="1.2" marker-end="url(#arr-sq)"/>
-  <text x="70" y="50" fill="#38bdf8" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">1: Seq=120</text>
-  <line x1="560" y1="65" x2="120" y2="85" stroke="#4ade80" stroke-width="1.2" marker-end="url(#arr-sq)"/>
-  <text x="610" y="70" fill="#4ade80" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">5: ACK=140</text>
-
-  <!-- Seg 2: LOST -->
-  <line x1="120" y1="70" x2="360" y2="85" stroke="#f87171" stroke-width="1.5"/>
-  <text x="370" y="88" fill="#f87171" font-size="11" font-weight="bold">✕ HILANG</text>
-  <text x="70" y="75" fill="#f87171" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">2: Seq=140</text>
-
-  <!-- Seg 3: Out-of-order -->
-  <line x1="120" y1="95" x2="560" y2="115" stroke="#38bdf8" stroke-width="1.2" marker-end="url(#arr-sq)"/>
-  <text x="70" y="100" fill="#38bdf8" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">3: Seq=160</text>
-  <line x1="560" y1="115" x2="120" y2="135" stroke="#fbbf24" stroke-width="1.2" marker-end="url(#arr-sq)"/>
-  <text x="610" y="120" fill="#fbbf24" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">6: ACK=140 (Dup)</text>
-
-  <!-- Duplicate ACK 7 -->
-  <line x1="560" y1="135" x2="120" y2="155" stroke="#fbbf24" stroke-width="1.2" marker-end="url(#arr-sq)"/>
-  <text x="610" y="145" fill="#fbbf24" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">7: ACK=140 (Dup)</text>
-
-  <!-- Timeout on Host A -->
-  <line x1="105" y1="70" x2="105" y2="165" stroke="#f87171" stroke-width="1.5"/>
-  <text x="95" y="125" fill="#f87171" font-size="8" text-anchor="end" font-family="ui-monospace, monospace">Timeout</text>
-
-  <!-- Seg 4: Retransmission of Seg 2 -->
-  <line x1="120" y1="170" x2="560" y2="190" stroke="#4ade80" stroke-width="2" marker-end="url(#arr-sq)"/>
-  <text x="340" y="183" fill="#4ade80" font-size="9" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">4: Retransmisi Segmen 2 (Seq=140)!</text>
-  <text x="70" y="175" fill="#4ade80" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">4: Seq=140</text>
-</svg>
-<p class="meta" style="text-align:center;margin-top:4px;">Alur Retransmisi Timeout TCP: Paket #4 mengulang Sequence Number paket tertua yang belum di-ACK (Seq=140), BUKAN paket baru.</p>
-</div>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>1 = 120, 2 = 140, 3 = 160, 4 = 140 | 5 = 140, 6 = 140, 7 = 140</code></p>
-      <p><strong>Pembahasan:</strong> • Segmen 1 (A→B): membawa 20 byte data bernomor 120 s.d. 139 $\rightarrow$ <code>Seq = 120</code>.<br>• Balasan 5 (B→A): B menerima byte 120–139, maka B mengharapkan byte berikutnya $\rightarrow$ <code>ACK = 140</code>.<br>• Segmen 2 (A→B): membawa byte 140 s.d. 159 $\rightarrow$ <code>Seq = 140</code> (namun HILANG di jalan).<br>• Segmen 3 (A→B): membawa byte 160 s.d. 179 $\rightarrow$ <code>Seq = 160</code> (tiba out-of-order di B).<br>• Balasan 6 &amp; 7 (B→A): Karena ada gap (byte 140 belum sampai), B mengulang cumulative ACK byte yang masih diharapkan $\rightarrow$ <code>ACK = 140</code> (Duplicate ACK).<br>• <strong>Segmen 4 (A→B setelah Timeout):</strong> Timer timeout pada segmen tertua yang belum di-ACK (segmen 2) habis! Host A meretransmisi Segmen 2 $\rightarrow$ <code>Seq = 140</code>!</p><p class="meta" style="color:#fbbf24;margin-top:6px;"><strong>⚠️ Jebakan &amp; Catatan Ujian:</strong> Banyak mahasiswa salah mengisi Segmen 4 dengan 180 karena mengira transmisi berlanjut normal. Ingat: setelah timeout, TCP meretransmisi segmen yang hilang (Seq = 140)!</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-calc qc-w4" id="inline-soal-6">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #6</span>
-    <span class="meta" style="color:#38bdf8;">[W04] &bull; Skenario Retransmisi TCP</span>
-  </div>
-  <p>Host A mengirimkan serangkaian segmen TCP ke host B dengan ukuran sama <strong>25 byte</strong> dan sequence number awal (nomor 1) adalah <strong>200</strong>. Jika segmen 2 hilang dan memicu timeout, lengkapi nilai Seq dan ACK!</p>
-<div class="diag">
-<svg viewBox="0 0 680 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <marker id="arr-sq" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#94a3b8"/>
-    </marker>
-  </defs>
-
-  <!-- Lifelines -->
-  <line x1="120" y1="30" x2="120" y2="200" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3"/>
-  <line x1="560" y1="30" x2="560" y2="200" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3"/>
-  <text x="120" y="20" fill="#38bdf8" font-size="10.5" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">Host A (Pengirim)</text>
-  <text x="560" y="20" fill="#4ade80" font-size="10.5" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">Host B (Penerima)</text>
-
-  <!-- Seg 1: OK -->
-  <line x1="120" y1="45" x2="560" y2="65" stroke="#38bdf8" stroke-width="1.2" marker-end="url(#arr-sq)"/>
-  <text x="70" y="50" fill="#38bdf8" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">1: Seq=200</text>
-  <line x1="560" y1="65" x2="120" y2="85" stroke="#4ade80" stroke-width="1.2" marker-end="url(#arr-sq)"/>
-  <text x="610" y="70" fill="#4ade80" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">5: ACK=225</text>
-
-  <!-- Seg 2: LOST -->
-  <line x1="120" y1="70" x2="360" y2="85" stroke="#f87171" stroke-width="1.5"/>
-  <text x="370" y="88" fill="#f87171" font-size="11" font-weight="bold">✕ HILANG</text>
-  <text x="70" y="75" fill="#f87171" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">2: Seq=225</text>
-
-  <!-- Seg 3: Out-of-order -->
-  <line x1="120" y1="95" x2="560" y2="115" stroke="#38bdf8" stroke-width="1.2" marker-end="url(#arr-sq)"/>
-  <text x="70" y="100" fill="#38bdf8" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">3: Seq=250</text>
-  <line x1="560" y1="115" x2="120" y2="135" stroke="#fbbf24" stroke-width="1.2" marker-end="url(#arr-sq)"/>
-  <text x="610" y="120" fill="#fbbf24" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">6: ACK=225 (Dup)</text>
-
-  <!-- Duplicate ACK 7 -->
-  <line x1="560" y1="135" x2="120" y2="155" stroke="#fbbf24" stroke-width="1.2" marker-end="url(#arr-sq)"/>
-  <text x="610" y="145" fill="#fbbf24" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">7: ACK=225 (Dup)</text>
-
-  <!-- Timeout on Host A -->
-  <line x1="105" y1="70" x2="105" y2="165" stroke="#f87171" stroke-width="1.5"/>
-  <text x="95" y="125" fill="#f87171" font-size="8" text-anchor="end" font-family="ui-monospace, monospace">Timeout</text>
-
-  <!-- Seg 4: Retransmission of Seg 2 -->
-  <line x1="120" y1="170" x2="560" y2="190" stroke="#4ade80" stroke-width="2" marker-end="url(#arr-sq)"/>
-  <text x="340" y="183" fill="#4ade80" font-size="9" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">4: Retransmisi Segmen 2 (Seq=225)!</text>
-  <text x="70" y="175" fill="#4ade80" font-size="8.5" font-weight="bold" font-family="ui-monospace, monospace">4: Seq=225</text>
-</svg>
-<p class="meta" style="text-align:center;margin-top:4px;">Alur Retransmisi Timeout TCP: Paket #4 mengulang Sequence Number paket tertua yang belum di-ACK (Seq=225), BUKAN paket baru.</p>
-</div>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>1 = 200, 2 = 225, 3 = 250, 4 = 225 | 5 = 225, 6 = 225, 7 = 225</code></p>
-      <p><strong>Pembahasan:</strong> • Segmen 1: <code>Seq = 200</code> (byte 200–224) $\rightarrow$ Balasan 5: <code>ACK = 225</code>.<br>• Segmen 2: <code>Seq = 225</code> (byte 225–249, HILANG).<br>• Segmen 3: <code>Seq = 250</code> (byte 250–274, out-of-order) $\rightarrow$ Balasan 6 &amp; 7: <code>ACK = 225</code> (Duplicate ACK).<br>• Segmen 4: Timeout terjadi untuk paket 2 $\rightarrow$ Host A mengirim ulang paket 2 $\rightarrow$ <code>Seq = 225</code>.</p><p class="meta" style="color:#fbbf24;margin-top:6px;"><strong>⚠️ Jebakan &amp; Catatan Ujian:</strong> Kunci di nomor 4 adalah 225 (bukan 275). Segmen yang dikirim saat timeout adalah segmen yang belum di-ACK.</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-calc qc-w4" id="inline-soal-7">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #7</span>
-    <span class="meta" style="color:#38bdf8;">[W04] &bull; Analisis Grafik Congestion Control</span>
-  </div>
-  <p>Gambar di bawah mengilustrasikan evolusi dari TCP congestion window menggunakan <strong>TCP Reno</strong>. Sumbu x menyatakan transmission round dalam satuan RTT, sedangkan sumbu y menggambarkan ukuran cwnd dalam satuan MSS. Pada kondisi awal, <code>cwnd = 1</code>, dan <code>ssthresh = 8</code>.<br>Berapa <strong>THROUGHPUT rata-rata mulai RTT ke 12 sampai RTT 16</strong> dalam satuan cwnd/RTT (catatan: segmen yang dikirim pada RTT ke 12 tidak ikut dihitung. Tulis jawaban dalam bentuk desimal)?</p>
-<div class="diag">
-<svg viewBox="0 0 680 200" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-  <!-- Axes -->
-  <line x1="40" y1="170" x2="660" y2="170" stroke="#64748b" stroke-width="1.5"/>
-  <line x1="40" y1="20" x2="40" y2="170" stroke="#64748b" stroke-width="1.5"/>
-  <text x="660" y="165" fill="#94a3b8" font-size="9" text-anchor="end" font-family="ui-monospace, monospace">RTT (Transmission Round)</text>
-  <text x="35" y="20" fill="#94a3b8" font-size="9" text-anchor="end" font-family="ui-monospace, monospace">cwnd (MSS)</text>
-
-  <!-- Y Ticks -->
-  <text x="32" y="174" fill="#64748b" font-size="8" text-anchor="end" font-family="ui-monospace, monospace">0</text>
-  <line x1="37" y1="115" x2="43" y2="115" stroke="#64748b"/>
-  <text x="32" y="118" fill="#64748b" font-size="8" text-anchor="end" font-family="ui-monospace, monospace">4</text>
-  <line x1="37" y1="60" x2="43" y2="60" stroke="#64748b"/>
-  <text x="32" y="63" fill="#64748b" font-size="8" text-anchor="end" font-family="ui-monospace, monospace">8 (ssthresh)</text>
-  <line x1="40" y1="60" x2="650" y2="60" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
-  <line x1="37" y1="32" x2="43" y2="32" stroke="#64748b"/>
-  <text x="32" y="35" fill="#64748b" font-size="8" text-anchor="end" font-family="ui-monospace, monospace">10</text>
-
-  <!-- Curve: RTT 1 to 12 -->
-  <!-- R1:1, R2:2, R3:4, R4:8, R5:9, R6:10, R7:11, R8:12 -->
-  <polyline points="40,156 58,142 76,115 94,60 112,46 130,32 148,18 166,170 184,156 202,142 220,115 238,60" 
-    fill="none" stroke="#64748b" stroke-width="1.5"/>
-
-  <!-- Highlight Box: RTT 12 to 16 -->
-  <rect x="238" y="25" width="95" height="145" fill="#14532d" fill-opacity="0.25" stroke="#4ade80" stroke-width="1" stroke-dasharray="3 2"/>
-  <text x="285" y="42" fill="#4ade80" font-size="8.5" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">Area Hitungan (RTT 13–16)</text>
-
-  <!-- Reno Fast Recovery & Congestion Avoidance line: RTT 12:8 -> RTT 13:4 -> R14:5 -> R15:6 -> R16:7 -->
-  <circle cx="238" cy="60" r="3.5" fill="#f87171"/>
-  <text x="238" y="52" fill="#f87171" font-size="8" text-anchor="middle" font-family="ui-monospace, monospace">Loss (8)</text>
-
-  <polyline points="238,60 258,115 278,101 298,87 318,73" fill="none" stroke="#4ade80" stroke-width="2.5"/>
-  <circle cx="258" cy="115" r="3" fill="#4ade80"/><text x="258" y="128" fill="#4ade80" font-size="7.5" text-anchor="middle">4</text>
-  <circle cx="278" cy="101" r="3" fill="#4ade80"/><text x="278" y="94" fill="#4ade80" font-size="7.5" text-anchor="middle">5</text>
-  <circle cx="298" cy="87" r="3" fill="#4ade80"/><text x="298" y="80" fill="#4ade80" font-size="7.5" text-anchor="middle">6</text>
-  <circle cx="318" cy="73" r="3" fill="#4ade80"/><text x="318" y="66" fill="#4ade80" font-size="7.5" text-anchor="middle">7</text>
-
-  <!-- Rest of curve -->
-  <polyline points="318,73 338,60 358,46 378,32 398,170 418,156 438,142 458,115 478,60" fill="none" stroke="#64748b" stroke-width="1.5"/>
-
-  <!-- RTT labels on X-axis -->
-  <text x="238" y="182" fill="#f87171" font-size="8" text-anchor="middle" font-family="ui-monospace, monospace">12</text>
-  <text x="258" y="182" fill="#4ade80" font-size="8" text-anchor="middle" font-family="ui-monospace, monospace">13</text>
-  <text x="278" y="182" fill="#4ade80" font-size="8" text-anchor="middle" font-family="ui-monospace, monospace">14</text>
-  <text x="298" y="182" fill="#4ade80" font-size="8" text-anchor="middle" font-family="ui-monospace, monospace">15</text>
-  <text x="318" y="182" fill="#4ade80" font-size="8" text-anchor="middle" font-family="ui-monospace, monospace">16</text>
-</svg>
-<p class="meta" style="text-align:center;margin-top:4px;">Evolusi Congestion Window TCP Reno: RTT 12 mengalami loss, ssthresh baru = 8/2 = 4, cwnd mulai tumbuh linier di RTT 13–16.</p>
-</div>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>5.5 (atau 5.75 tergantung rentang round)</code></p>
-      <p><strong>Pembahasan:</strong> • Di RTT 12, cwnd = 8 dan terdeteksi loss (3 duplicate ACKs). Sesuai TCP Reno, nilai ssthresh baru diset menjadi $\text{cwnd}/2 = 8/2 = 4$.<br>• Segmen pada RTT 12 tidak dihitung sesuai catatan soal. Maka ronde yang dihitung adalah RTT 13, 14, 15, dan 16 (4 interval):<br>  - RTT 13: cwnd = 4<br>  - RTT 14: cwnd = 5<br>  - RTT 15: cwnd = 6<br>  - RTT 16: cwnd = 7<br>• Throughput rata-rata = $\frac{4 + 5 + 6 + 7}{4} = \frac{22}{4} = \mathbf{5{,}5\text{ cwnd/RTT}}$.<br><span class="meta">Catatan variasi: Jika nilai ronde diambil 8, 4, 5, 6 maka $(8+4+5+6)/4 = 5{,}75$.</span></p><p class="meta" style="color:#fbbf24;margin-top:6px;"><strong>⚠️ Jebakan &amp; Catatan Ujian:</strong> Perhatikan instruksi soal: 'segment yang dikirim pada RTT ke 12 tidak ikut dihitung'. Jadi hanya rata-ratakan 4 titik setelah loss.</p>
-    </div>
-  </details>
-</div>
-
-  <div style="margin-top:18px;padding-top:14px;border-top:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span class="meta" style="color:#cbd5e1;">Tersedia total <strong>6 soal W05</strong> di Bank Soal interaktif lengkap dengan filter topik.</span>
-    <button class="btn" style="background:#38bdf8;color:#000;font-weight:700;padding:6px 14px;cursor:pointer;" onclick="show('soal'); filterQuiz('w4');">Buka Seluruh 6 Soal di Bank Soal &rarr;</button>
-  </div>
-</div>
 
 </div>
 <div class="wk" id="w6" hidden>
@@ -2594,7 +2120,6 @@ while True:
 <li><a href="#w6s4">Packet scheduling disciplines</a></li>
 <li><a href="#w6s5">IPv4, IPv6, dan transisi tunneling</a></li>
 <li><a href="#w6s6">Subnetting: FLSM dan VLSM</a></li>
-<li><a href="#w6-kuis" style="color:#38bdf8;font-weight:600;">📝 Latihan Soal Kuis W06 (Asli SCELE UI)</a></li>
 </ol>
 
 <hr>
@@ -3006,117 +2531,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
 <li>Subnetting FLSM memakai satu mask tetap sehingga boros alamat; VLSM mengurutkan alokasi dari host terbesar ke terkecil dengan mask bervariasi untuk menghemat alamat secara maksimal.</li>
 </ul>
 
-<hr>
-<div class="box" id="w6-kuis" style="border-left:4px solid #38bdf8;background:#111827;margin-top:28px;padding:20px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-    <h3 style="margin:0;color:#38bdf8;font-size:1.15rem;">📝 Latihan Soal Kuis W06 (Asli SCELE UI)</h3>
-    <span class="meta" style="color:#38bdf8;background:#0f172a;padding:3px 8px;border-radius:4px;border:1px solid #1e293b;">3 Soal Latihan Langsung</span>
-  </div>
-  <p class="meta" style="color:#94a3b8;margin-bottom:18px;">Soal fragmentasi datagram IP (MTU 600 B), subnetting CIDR /24 ke 4 subnet /26, dan keputusan forwarding Router R2 (longest prefix match) dengan diagram topologi. Klik <em>Lihat Kunci &amp; Pembahasan</em> untuk menampilkan solusi resmi dan analisis jebakan.</p>
 
-  <div class="box q-inline qc-calc qc-w6" id="inline-soal-4">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #4</span>
-    <span class="meta" style="color:#38bdf8;">[W06] &bull; Studi Kasus Fragmentasi IPv4</span>
-  </div>
-  <p>Ketika suatu datagram IP berukuran <strong>3000 bytes</strong> akan ditransmisikan pada suatu link yang memiliki MTU sebesar <strong>1500 bytes</strong>:<br>1. Berapakah jumlah fragmen yang dihasilkan?<br>2. Berapakah ukuran fragmen pertama (dalam bytes)?<br>3. Berapakah ukuran fragmen terakhir (dalam bytes)?</p>
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>Jumlah fragmen = 3; Fragmen pertama = 1500; Fragmen terakhir = 40</code></p>
-      <p><strong>Pembahasan:</strong> • Datagram awal: Total 3000 B = <strong>20 B Header IP + 2980 B Data Payload</strong>.<br>• Link MTU = 1500 B. Kapasitas data maksimum per fragmen = $1500 - 20 = 1480\text{ B}$ (harus kelipatan 8, dan 1480 habis dibagi 8: $1480 / 8 = 185$).<br>• <strong>Fragmen 1:</strong> 20 B Header + 1480 B Data = <strong>1500 B</strong> (FragFlag = 1, Offset = 0).<br>• <strong>Fragmen 2:</strong> 20 B Header + 1480 B Data = <strong>1500 B</strong> (FragFlag = 1, Offset = 185).<br>• Total data yang sudah terkirim di fragmen 1 &amp; 2 = $1480 + 1480 = 2960\text{ B}$.<br>• Sisa data yang belum terkirim = $2980 - 2960 = \mathbf{20\text{ B}}$.<br>• <strong>Fragmen 3 (Terakhir):</strong> 20 B Header IP + 20 B Sisa Data = <strong>40 B</strong> (FragFlag = 0, Offset = $2960 / 8 = 370$).</p><p class="meta" style="color:#fbbf24;margin-top:6px;"><strong>⚠️ Jebakan &amp; Catatan Ujian:</strong> Ini adalah jebakan nomor 1 di kuis SCELE! Jawaban ukuran fragmen terakhir BUKAN 1500 B atau 20 B, melainkan 40 B (karena ukuran fragmen selalu menyertakan 20 byte header IP baru!).</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-calc qc-w6" id="inline-soal-8">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #8</span>
-    <span class="meta" style="color:#38bdf8;">[W06] &bull; Studi Kasus Subnetting VLSM</span>
-  </div>
-  <p>Diberikan IP address range = <strong>204.15.5.0/24</strong>. Lakukan subnetting untuk mengakomodasi alokasi pada 4 departemen: <strong>A: 29 hosts, B: 100 hosts, C: 2 hosts, D: 6 hosts</strong>.<br>Kriteria: alokasikan IP minimum yang cukup dan sisakan blok contiguous terpanjang!</p>
-<div class="tw"><table>
-<tr><th>Departemen</th><th>Kebutuhan</th><th>Prefix</th><th>Subnet Address</th><th>First Host Available</th><th>Last Host Available</th><th>Broadcast</th></tr>
-<tr><td><strong>B</strong></td><td>100 hosts</td><td><code>/25</code></td><td><code>204.15.5.0</code></td><td><code>204.15.5.1</code></td><td><code>204.15.5.126</code></td><td><code>204.15.5.127</code></td></tr>
-<tr><td><strong>A</strong></td><td>29 hosts</td><td><code>/27</code></td><td><code>204.15.5.128</code></td><td><code>204.15.5.129</code></td><td><code>204.15.5.158</code></td><td><code>204.15.5.159</code></td></tr>
-<tr><td><strong>D</strong></td><td>6 hosts</td><td><code>/29</code></td><td><code>204.15.5.160</code></td><td><code>204.15.5.161</code></td><td><code>204.15.5.166</code></td><td><code>204.15.5.167</code></td></tr>
-<tr><td><strong>C</strong></td><td>2 hosts</td><td><code>/30</code></td><td><code>204.15.5.168</code></td><td><code>204.15.5.169</code></td><td><code>204.15.5.170</code></td><td><code>204.15.5.171</code></td></tr>
-</table></div>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>B(/25, .0-.126), A(/27, .128-.158), D(/29, .160-.166), C(/30, .168-.170)</code></p>
-      <p><strong>Pembahasan:</strong> <strong>Langkah VLSM Wajib:</strong><br>1. <strong>Urutkan dari host terbesar:</strong> B (100) → A (29) → D (6) → C (2).<br>2. <strong>Subnet B (100 hosts):</strong> Butuh $2^h - 2 \ge 100 \rightarrow h=7$ ($2^7 = 128$). Prefix $= 32 - 7 = \mathbf{/25}$. Rentang: <code>204.15.5.0</code> s.d. <code>.127</code>. Host usable: <code>.1</code> s.d. <code>.126</code>.<br>3. <strong>Subnet A (29 hosts):</strong> Butuh $2^h - 2 \ge 29 \rightarrow h=5$ ($2^5 = 32$). Prefix $= 32 - 5 = \mathbf{/27}$. Alamat awal harus kelipatan 32 $\rightarrow$ <code>204.15.5.128</code>. Host usable: <code>.129</code> s.d. <code>.158</code>.<br>4. <strong>Subnet D (6 hosts):</strong> Butuh $2^h - 2 \ge 6 \rightarrow h=3$ ($2^3 = 8$). Prefix $= 32 - 3 = \mathbf{/29}$. Alamat awal kelipatan 8 $\rightarrow$ <code>204.15.5.160</code>. Host usable: <code>.161</code> s.d. <code>.166</code>.<br>5. <strong>Subnet C (2 hosts):</strong> Butuh $2^h - 2 \ge 2 \rightarrow h=2$ ($2^2 = 4$). Prefix $= 32 - 2 = \mathbf{/30}$. Alamat awal kelipatan 4 $\rightarrow$ <code>204.15.5.168</code>. Host usable: <code>.169</code> s.d. <code>.170</code>.<br>• Sisa alamat tak terpakai kontigu utuh: <code>204.15.5.172</code> s.d. <code>204.15.5.255</code> (84 alamat IP!).</p><p class="meta" style="color:#fbbf24;margin-top:6px;"><strong>⚠️ Jebakan &amp; Catatan Ujian:</strong> Jika Anda tidak mengurutkan dari kebutuhan terbesar ke terkecil, alamat akan terfragmentasi dan Anda akan kehilangan poin penuh di SCELE.</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-calc qc-w6" id="inline-soal-9">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #9</span>
-    <span class="meta" style="color:#38bdf8;">[W06] &bull; Forwarding Table Lookup</span>
-  </div>
-  <p>Perhatikan topologi 3 router di bawah. Apa yang akan dilakukan oleh <strong>router R2</strong> pada saat menerima paket dengan IP tujuan <strong>192.168.10.100</strong>?</p>
-<div class="diag">
-<svg viewBox="0 0 680 180" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-  <!-- Routers -->
-  <circle cx="150" cy="90" r="24" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-  <text x="150" y="94" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">R1</text>
-
-  <circle cx="340" cy="90" r="26" fill="#1e3a5f" stroke="#fbbf24" stroke-width="2"/>
-  <text x="340" y="94" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">R2</text>
-
-  <circle cx="530" cy="90" r="24" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-  <text x="530" y="94" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">R3</text>
-
-  <!-- Serial Links -->
-  <line x1="174" y1="90" x2="314" y2="90" stroke="#64748b" stroke-width="1.5"/>
-  <text x="245" y="82" fill="#94a3b8" font-size="7.5" text-anchor="middle" font-family="ui-monospace, monospace">10.0.0.0/30 (S0/0/0)</text>
-
-  <line x1="366" y1="90" x2="506" y2="90" stroke="#64748b" stroke-width="1.5"/>
-  <text x="435" y="82" fill="#94a3b8" font-size="7.5" text-anchor="middle" font-family="ui-monospace, monospace">10.0.0.4/30 (S0/0/1)</text>
-
-  <!-- LAN FastEthernet Subnets -->
-  <!-- R1 LAN -->
-  <line x1="150" y1="114" x2="150" y2="140" stroke="#38bdf8" stroke-width="1.2"/>
-  <rect x="75" y="140" width="150" height="26" rx="3" fill="#111827" stroke="#38bdf8" stroke-width="1"/>
-  <text x="150" y="156" fill="#cbd5e1" font-size="8" text-anchor="middle" font-family="ui-monospace, monospace">192.168.10.0/26 (.0 s.d. .63)</text>
-
-  <!-- R2 LAN (TARGET) -->
-  <line x1="340" y1="116" x2="340" y2="140" stroke="#4ade80" stroke-width="2"/>
-  <rect x="250" y="140" width="180" height="30" rx="3" fill="#064e3b" stroke="#4ade80" stroke-width="1.5"/>
-  <text x="340" y="154" fill="#4ade80" font-size="8.5" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">Fa0/0: 192.168.10.64/26</text>
-  <text x="340" y="165" fill="#a7f3d0" font-size="7.5" text-anchor="middle" font-family="ui-monospace, monospace">Rentang: .64 s.d. .127 (Mencakup .100!)</text>
-
-  <!-- R3 LAN -->
-  <line x1="530" y1="114" x2="530" y2="140" stroke="#38bdf8" stroke-width="1.2"/>
-  <rect x="455" y="140" width="150" height="26" rx="3" fill="#111827" stroke="#38bdf8" stroke-width="1"/>
-  <text x="530" y="156" fill="#cbd5e1" font-size="8" text-anchor="middle" font-family="ui-monospace, monospace">192.168.10.128/26 (.128 s.d. .191)</text>
-
-  <!-- Incoming Packet Banner -->
-  <rect x="240" y="15" width="200" height="28" rx="3" fill="#78350f" stroke="#fbbf24" stroke-width="1"/>
-  <text x="340" y="32" fill="#fbbf24" font-size="8.5" font-weight="bold" text-anchor="middle" font-family="ui-monospace, monospace">Paket Masuk: Tujuan 192.168.10.100</text>
-</svg>
-<p class="meta" style="text-align:center;margin-top:4px;">Forwarding Router R2: Alamat 192.168.10.100 berada dalam subnet 192.168.10.64/26, diteruskan langsung ke interface lokal Fa0/0.</p>
-</div>
-<ul class="q-opt">
-  <li class="correct">a. Meneruskan keluar melalui interface FastEthernet0/0 <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-  <li>b. Meneruskan keluar melalui interface Serial0/0/1</li>
-  <li>c. Meneruskan keluar melalui interface Serial0/0/0</li>
-  <li>d. Membuang (drop) packet</li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>a. Meneruskan keluar melalui interface FastEthernet0/0</code></p>
-      <p><strong>Pembahasan:</strong> Rentang subnet pada masing-masing interface:<br>• R1 LAN: <code>192.168.10.0/26</code> (rentang .0 s.d. .63)<br>• <strong>R2 LAN (Fa0/0): <code>192.168.10.64/26</code> (rentang .64 s.d. .127)</strong><br>• R3 LAN: <code>192.168.10.128/26</code> (rentang .128 s.d. .191)<br>Karena alamat tujuan adalah <code>192.168.10.100</code> dan nilai 100 berada di antara 64 dan 127, maka tujuan berada di subnet lokal R2 sendiri. R2 langsung meneruskannya ke interface LAN <strong>FastEthernet0/0</strong>.</p><p class="meta" style="color:#fbbf24;margin-top:6px;"><strong>⚠️ Jebakan &amp; Catatan Ujian:</strong> Cek batas subnet /26 (block size 64). .64 + 64 = .128. Host 100 pasti berada di dalam interface lokal R2.</p>
-    </div>
-  </details>
-</div>
-
-  <div style="margin-top:18px;padding-top:14px;border-top:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span class="meta" style="color:#cbd5e1;">Tersedia total <strong>4 soal W06</strong> di Bank Soal interaktif lengkap dengan filter topik.</span>
-    <button class="btn" style="background:#38bdf8;color:#000;font-weight:700;padding:6px 14px;cursor:pointer;" onclick="show('soal'); filterQuiz('w6');">Buka Seluruh 4 Soal di Bank Soal &rarr;</button>
-  </div>
-</div>
 
 </div>
 <div class="wk" id="w7" hidden>
@@ -3131,7 +2546,6 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
 <li><a href="#w7s5">Generalized forwarding dan OpenFlow</a></li>
 <li><a href="#w7s6">Middleboxes dan arsitektur Internet</a></li>
 <li><a href="#w7s7">Topik tambahan: fragmentasi IP dan DHCP Wireshark</a></li>
-<li><a href="#w7-kuis" style="color:#38bdf8;font-weight:600;">📝 Latihan Soal Kuis W07 (Asli SCELE UI)</a></li>
 </ol>
 
 <hr>
@@ -3506,72 +2920,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
 <li>Arsitektur jam pasir (IP hourglass) mempertahankan IP sebagai <em>thin waist</em> dan berpegang pada <em>end-to-end argument</em>. Fragmentasi IPv4 memecah paket besar berdasarkan MTU dengan perakitan hanya di host tujuan.</li>
 </ul>
 
-<hr>
-<div class="box" id="w7-kuis" style="border-left:4px solid #38bdf8;background:#111827;margin-top:28px;padding:20px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-    <h3 style="margin:0;color:#38bdf8;font-size:1.15rem;">📝 Latihan Soal Kuis W07 (Asli SCELE UI)</h3>
-    <span class="meta" style="color:#38bdf8;background:#0f172a;padding:3px 8px;border-radius:4px;border:1px solid #1e293b;">3 Soal Latihan Langsung</span>
-  </div>
-  <p class="meta" style="color:#94a3b8;margin-bottom:18px;">Soal transaction ID protokol DHCP, implementasi firewall pada OpenFlow flow table, dan multi-layer matching (IP + MAC address) pada SDN. Klik <em>Lihat Kunci &amp; Pembahasan</em> untuk menampilkan solusi resmi dan analisis jebakan.</p>
 
-  <div class="box q-inline qc-w6" id="inline-soal-56">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #56</span>
-    <span class="meta" style="color:#38bdf8;">[W07] &bull; Benar / Salah</span>
-  </div>
-  <p>DHCP discover dan DHCP request akan menggunakan nilai transaction ID yang sama.</p><ul class="q-opt">
-  <li>True</li>
-  <li class="correct">False <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>False</code></p>
-      <p><strong>Pembahasan:</strong> Di SCELE Fasilkom UI, kunci jawaban resmi bernilai <strong>False</strong> karena pesan DHCP Request menghasilkan transaksi baru atau memodifikasi ID untuk mengikat tawaran server terpilih.</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-w6" id="inline-soal-57">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #57</span>
-    <span class="meta" style="color:#38bdf8;">[W07] &bull; Benar / Salah</span>
-  </div>
-  <p>Kita dapat mengimplementasikan fungsi firewall pada flow table software-defined networking (SDN) selain fungsi forwarding.</p><ul class="q-opt">
-  <li class="correct">True <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-  <li>False</li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>True</code></p>
-      <p><strong>Pembahasan:</strong> Melalui konsep Generalized Forwarding (OpenFlow), aturan match-plus-action dapat mencocokkan IP/port dan menjalankan aksi <code>Drop</code> (fungsi firewall).</p>
-    </div>
-  </details>
-</div><div class="box q-inline qc-w6" id="inline-soal-58">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #58</span>
-    <span class="meta" style="color:#38bdf8;">[W07] &bull; Benar / Salah</span>
-  </div>
-  <p>Flow table pada software-defined networking (SDN) dapat melakukan action drop packet yang berasal dari suatu subnet menggunakan IP address matching maupun dari suatu device dengan MAC address matching.</p><ul class="q-opt">
-  <li class="correct">True <span style="color:#4ade80;font-weight:bold;">✓ (Kunci)</span></li>
-  <li>False</li>
-</ul>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>True</code></p>
-      <p><strong>Pembahasan:</strong> OpenFlow mendukung pencocokan 12 field header sekaligus, mencakup MAC address (Link Layer) dan IP address (Network Layer).</p>
-    </div>
-  </details>
-</div>
-
-  <div style="margin-top:18px;padding-top:14px;border-top:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span class="meta" style="color:#cbd5e1;">Tersedia total <strong>3 soal W07</strong> di Bank Soal interaktif lengkap dengan filter topik.</span>
-    <button class="btn" style="background:#38bdf8;color:#000;font-weight:700;padding:6px 14px;cursor:pointer;" onclick="show('soal'); filterQuiz('w6');">Buka Seluruh 3 Soal di Bank Soal &rarr;</button>
-  </div>
-</div>
 
 </div>
 <div class="wk" id="w8" hidden>
@@ -3588,7 +2937,6 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
 <li><a href="#w8s7">SDN Control Plane</a></li>
 <li><a href="#w8s8">ICMP dan Traceroute</a></li>
 <li><a href="#w8s9">Network management: SNMP, NETCONF, dan YANG</a></li>
-<li><a href="#w8-kuis" style="color:#38bdf8;font-weight:600;">📝 Latihan Soal Kuis W08 (Asli SCELE UI)</a></li>
 </ol>
 
 <hr>
@@ -4204,122 +3552,53 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
 <li>Manajemen jaringan berevolusi dari SNMP/MIB menuju NETCONF/YANG berbasis XML RPC over TLS dengan atomic commit.</li>
 </ul>
 
-<hr>
-<div class="box" id="w8-kuis" style="border-left:4px solid #38bdf8;background:#111827;margin-top:28px;padding:20px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-    <h3 style="margin:0;color:#38bdf8;font-size:1.15rem;">📝 Latihan Soal Kuis W08 (Asli SCELE UI)</h3>
-    <span class="meta" style="color:#38bdf8;background:#0f172a;padding:3px 8px;border-radius:4px;border:1px solid #1e293b;">1 Soal Latihan Langsung</span>
-  </div>
-  <p class="meta" style="color:#94a3b8;margin-bottom:18px;">Studi kasus komputasi algoritma Dijkstra Link-State pada graf 7-node (A–G) lengkap dengan tie-break alfabetis dan pembentukan forwarding table. Klik <em>Lihat Kunci &amp; Pembahasan</em> untuk menampilkan solusi resmi dan analisis jebakan.</p>
 
-  <div class="box q-inline qc-calc qc-w8" id="inline-soal-10">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <span style="font-weight:700;color:#fff;">Soal #10</span>
-    <span class="meta" style="color:#38bdf8;">[W08] &bull; Algoritma Link-State Dijkstra</span>
-  </div>
-  <p>Diberikan topologi graf 7 node (A, B, C, D, E, F, G) pada gambar di bawah. Dengan sumber awal adalah <strong>Node G</strong>, hitung tabel algoritma Dijkstra hingga seluruh simpul masuk ke dalam N'!</p>
-<div class="diag">
-<svg viewBox="0 0 680 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-  <!-- Links -->
-  <line x1="80" y1="110" x2="160" y2="40" stroke="#64748b" stroke-width="1.2"/>
-  <text x="110" y="65" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">2</text>
-
-  <line x1="80" y1="110" x2="160" y2="180" stroke="#64748b" stroke-width="1.2"/>
-  <text x="110" y="155" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">1</text>
-
-  <line x1="160" y1="40" x2="160" y2="180" stroke="#64748b" stroke-width="1.2"/>
-  <text x="168" y="110" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">4</text>
-
-  <line x1="160" y1="40" x2="300" y2="40" stroke="#64748b" stroke-width="1.2"/>
-  <text x="230" y="32" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">3</text>
-
-  <line x1="160" y1="40" x2="260" y2="110" stroke="#64748b" stroke-width="1.2"/>
-  <text x="210" y="80" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">4</text>
-
-  <line x1="160" y1="180" x2="260" y2="110" stroke="#64748b" stroke-width="1.2"/>
-  <text x="200" y="150" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">2</text>
-
-  <line x1="160" y1="180" x2="360" y2="180" stroke="#64748b" stroke-width="1.2"/>
-  <text x="260" y="192" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">5</text>
-
-  <line x1="300" y1="40" x2="260" y2="110" stroke="#64748b" stroke-width="1.2"/>
-  <text x="288" y="75" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">4</text>
-
-  <line x1="300" y1="40" x2="360" y2="180" stroke="#64748b" stroke-width="1.2"/>
-  <text x="340" y="105" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">2</text>
-
-  <line x1="260" y1="110" x2="360" y2="180" stroke="#64748b" stroke-width="1.2"/>
-  <text x="300" y="150" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">1</text>
-
-  <line x1="300" y1="40" x2="480" y2="110" stroke="#64748b" stroke-width="1.2"/>
-  <text x="400" y="65" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">2</text>
-
-  <line x1="360" y1="180" x2="480" y2="110" stroke="#64748b" stroke-width="1.2"/>
-  <text x="430" y="155" fill="#94a3b8" font-size="8" font-family="ui-monospace, monospace">5</text>
-
-  <!-- Nodes -->
-  <circle cx="80" cy="110" r="16" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/><text x="80" y="114" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">A</text>
-  <circle cx="160" cy="40" r="16" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/><text x="160" y="44" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">B</text>
-  <circle cx="160" cy="180" r="16" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/><text x="160" y="184" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">C</text>
-  <circle cx="260" cy="110" r="16" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/><text x="260" y="114" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">D</text>
-  <circle cx="300" cy="40" r="16" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/><text x="300" y="44" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">E</text>
-  <circle cx="360" cy="180" r="16" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/><text x="360" y="184" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">F</text>
-  <circle cx="480" cy="110" r="18" fill="#14532d" stroke="#4ade80" stroke-width="2"/><text x="480" y="114" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">G</text>
-  <text x="480" y="140" fill="#4ade80" font-size="8" font-weight="bold" text-anchor="middle">Root G</text>
-</svg>
-<p class="meta" style="text-align:center;margin-top:4px;">Topologi 7 Node Dijkstra dari Sumber Node G: Digunakan pada Kuis SCELE Gasal 2022/2023.</p>
-</div><div class="tw"><table>
-<tr><th>Step</th><th>N'</th><th>D(A),p(A)</th><th>D(B),p(B)</th><th>D(C),p(C)</th><th>D(D),p(D)</th><th>D(E),p(E)</th><th>D(F),p(F)</th><th>Pilihan Node</th></tr>
-<tr><td>0</td><td>G</td><td>inf</td><td>inf</td><td>inf</td><td>inf</td><td><strong>2,G</strong></td><td>5,G</td><td>Pilih <strong>E</strong> (D=2)</td></tr>
-<tr><td>1</td><td>GE</td><td>inf</td><td>5,E</td><td>inf</td><td>6,E</td><td>2,G</td><td><strong>4,E</strong></td><td>Pilih <strong>F</strong> (D=4)</td></tr>
-<tr><td>2</td><td>GEF</td><td>inf</td><td><strong>5,E</strong></td><td>9,F</td><td>5,F</td><td>2,G</td><td>4,E</td><td>Tie B &amp; D (D=5) → Pilih <strong>B</strong> (paling kiri)</td></tr>
-<tr><td>3</td><td>GEFB</td><td>7,B</td><td>5,E</td><td>9,F</td><td><strong>5,F</strong></td><td>2,G</td><td>4,E</td><td>Pilih <strong>D</strong> (D=5)</td></tr>
-<tr><td>4</td><td>GEFBD</td><td><strong>7,B</strong></td><td>5,E</td><td>7,D</td><td>5,F</td><td>2,G</td><td>4,E</td><td>Tie A &amp; C (D=7) → Pilih <strong>A</strong> (paling kiri)</td></tr>
-<tr><td>5</td><td>GEFBDA</td><td>7,B</td><td>5,E</td><td><strong>7,D</strong></td><td>5,F</td><td>2,G</td><td>4,E</td><td>Pilih <strong>C</strong> (D=7)</td></tr>
-<tr><td>6</td><td>GEFBDAC</td><td>7,B</td><td>5,E</td><td>7,D</td><td>5,F</td><td>2,G</td><td>4,E</td><td>Selesai!</td></tr>
-</table></div>
-
-  <details class="q-ans">
-    <summary class="btn" style="padding:4px 10px;font-size:11px;cursor:pointer;margin:8px 0;">Lihat Kunci &amp; Pembahasan</summary>
-    <div style="margin-top:10px;border-left:2px solid #4ade80;padding-left:14px;">
-      <p><strong style="color:#4ade80;">Kunci Jawaban Resmi:</strong> <code>Urutan simpul terpilih: G → E (2) → F (4) → B (5) → D (5) → A (7) → C (7)</code></p>
-      <p><strong>Pembahasan:</strong> Perhatikan aturan tie-breaking resmi SCELE: <em>'If there is any tie in least cost path calculation to some nodes, take left most node first, and then go to the right.'</em><br>• Pada Step 2: D(B)=5,E dan D(D)=5,F sama-sama berbiaya 5. Node B berada lebih ke kiri dari D, maka <strong>B dipilih duluan</strong>.<br>• Pada Step 4: D(A)=7,B dan D(C)=7,D sama-sama berbiaya 7. Node A berada lebih ke kiri dari C, maka <strong>A dipilih duluan</strong>.<br>Format jawaban SCELE tanpa spasi: <code>2,G</code>, <code>5,E</code>, <code>inf</code>.</p><p class="meta" style="color:#fbbf24;margin-top:6px;"><strong>⚠️ Jebakan &amp; Catatan Ujian:</strong> Kerap kali mahasiswa gagal mendapat nilai sempurna 17/17 hanya karena spasi atau salah urutan tie-break.</p>
-    </div>
-  </details>
-</div>
-<hr><h3>Bagian B: Soal W01 — Pengantar, Arsitektur Jaringan &amp; Delay</h3>
-
-  <div style="margin-top:18px;padding-top:14px;border-top:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span class="meta" style="color:#cbd5e1;">Tersedia total <strong>1 soal W08</strong> di Bank Soal interaktif lengkap dengan filter topik.</span>
-    <button class="btn" style="background:#38bdf8;color:#000;font-weight:700;padding:6px 14px;cursor:pointer;" onclick="show('soal'); filterQuiz('w8');">Buka Seluruh 1 Soal di Bank Soal &rarr;</button>
-  </div>
-</div>
 
 </div>
 </div> <!-- #materi tertutup sempurna di sini -->
 
 
 <div id="soal" hidden>
-<h2>Bank Soal &amp; Pembahasan Kuis / UTS Jarkom</h2>
-<p class="sub">Koleksi Soal Asli Kuis Fasilkom UI (Gasal 2021/2022, Gasal 2022/2023, &amp; 2023)</p>
-<p class="meta">Lengkap dengan kunci jawaban resmi SCELE, pembahasan langkah-demi-langkah, analisis jebakan ujian, dan ilustrasi diagram.</p>
-
-<div class="q-filters" role="tablist">
-  <button class="btn q-filter" id="qf-all" onclick="filterQuiz('all')" aria-selected="true">Semua Soal (58)</button>
-  <button class="btn q-filter" id="qf-calc" onclick="filterQuiz('calc')">Hitungan &amp; Kasus (10)</button>
-  <button class="btn q-filter" id="qf-w1" onclick="filterQuiz('w1')">W01: Overview &amp; Delay (20)</button>
-  <button class="btn q-filter" id="qf-w2" onclick="filterQuiz('w2')">W02–W03: App, DNS, P2P (20)</button>
-  <button class="btn q-filter" id="qf-w4" onclick="filterQuiz('w4')">W04–W05: Transport &amp; TCP (10)</button>
-  <button class="btn q-filter" id="qf-w6" onclick="filterQuiz('w6')">W06–W07: Network &amp; Subnet (7)</button>
-  <button class="btn q-filter" id="qf-w8" onclick="filterQuiz('w8')">W08: Routing &amp; Dijkstra (1)</button>
+<div style="border-bottom:1px solid #334155;padding-bottom:18px;margin-bottom:20px;">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+    <h2 style="margin:0;font-size:1.75rem;color:#f8fafc;">Bank Soal &amp; Pembahasan Kuis / UTS Jarkom</h2>
+  </div>
+  <p class="sub" style="margin:0 0 8px 0;color:#94a3b8;font-size:14px;">Koleksi Lengkap 58 Soal Asli Kuis Fasilkom UI (Gasal 2021/2022, Gasal 2022/2023, &amp; 2023)</p>
+  <p class="meta" style="margin:0;line-height:1.6;color:#cbd5e1;">Lengkap dengan kunci jawaban resmi SCELE, pembahasan langkah-demi-langkah (step-by-step), penurunan rumus hitungan matematis, analisis jebakan ujian, dan ilustrasi diagram topologi/timeline.</p>
+  
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
+    <span style="background:#0f172a;border:1px solid #38bdf8;padding:4px 10px;border-radius:6px;font-size:12px;color:#38bdf8;font-weight:700;">📊 Total: 58 Soal</span>
+    <span style="background:#0f172a;border:1px solid #4ade80;padding:4px 10px;border-radius:6px;font-size:12px;color:#4ade80;font-weight:700;">🧮 Hitungan &amp; Kasus: 10 Soal</span>
+    <span style="background:#0f172a;border:1px solid #334155;padding:4px 10px;border-radius:6px;font-size:12px;color:#94a3b8;">🌐 Pilihan Ganda &amp; Konsep: 48 Soal</span>
+    <span style="background:#0f172a;border:1px solid #fbbf24;padding:4px 10px;border-radius:6px;font-size:12px;color:#fbbf24;">⚠️ Dilengkapi Analisis Jebakan</span>
+  </div>
 </div>
 
-<div class="q-actions">
-  <button class="btn" onclick="toggleAllAnswers(true)">Buka Semua Pembahasan</button>
-  <button class="btn" onclick="toggleAllAnswers(false)">Tutup Semua Pembahasan</button>
+<div style="margin-bottom:16px;">
+  <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Filter Berdasarkan Topik &amp; Minggu:</div>
+  <div class="q-filters" role="tablist" style="display:flex;gap:6px;flex-wrap:wrap;">
+    <button class="btn q-filter" id="qf-all" onclick="filterQuiz('all')" aria-selected="true">Semua Soal (58)</button>
+    <button class="btn q-filter" id="qf-calc" onclick="filterQuiz('calc')">Hitungan &amp; Kasus (10)</button>
+    <button class="btn q-filter" id="qf-w1" onclick="filterQuiz('w1')">W01: Overview &amp; Delay (20)</button>
+    <button class="btn q-filter" id="qf-w2" onclick="filterQuiz('w2')">W02: App, DNS, P2P (19)</button>
+    <button class="btn q-filter" id="qf-w3" onclick="filterQuiz('w3')">W03: Web &amp; CDN (2)</button>
+    <button class="btn q-filter" id="qf-w4" onclick="filterQuiz('w4')">W04–W05: Transport &amp; TCP (9)</button>
+    <button class="btn q-filter" id="qf-w6" onclick="filterQuiz('w6')">W06: IP &amp; Subnetting (4)</button>
+    <button class="btn q-filter" id="qf-w7" onclick="filterQuiz('w7')">W07: DHCP, NAT &amp; SDN (3)</button>
+    <button class="btn q-filter" id="qf-w8" onclick="filterQuiz('w8')">W08: Routing &amp; Dijkstra (1)</button>
+  </div>
 </div>
 
-<h3>Bagian A: Latihan Hitungan &amp; Studi Kasus Analitis</h3>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;background:#0b1120;padding:12px;border:1px solid #1e293b;border-radius:8px;">
+  <input type="text" id="q-search" placeholder="🔍 Cari soal atau kata kunci (contoh: Dijkstra, Reno, subnet, MTU, 0.018, HTTP, DHCP, TCP, BitTorrent)..." 
+    oninput="searchQuiz(this.value)" 
+    style="flex:1;min-width:240px;background:#0f172a;border:1px solid #334155;color:#e2e8f0;padding:8px 12px;border-radius:6px;font-size:13px;outline:none;">
+  <button class="btn" onclick="toggleAllAnswers(true)" style="padding:7px 12px;font-size:12px;cursor:pointer;">Buka Semua Pembahasan</button>
+  <button class="btn" onclick="toggleAllAnswers(false)" style="padding:7px 12px;font-size:12px;cursor:pointer;">Tutup Semua</button>
+</div>
+<div id="q-search-msg" class="meta" style="margin-bottom:14px;color:#38bdf8;font-weight:600;" hidden></div>
+
+<h3 class="q-section-title">Bagian A: Latihan Hitungan &amp; Studi Kasus Analitis</h3>
 <div class="box q-item qc-calc qc-w1" id="soal-1">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <span style="font-weight:700;color:#fff;">Soal #1</span>
@@ -4722,7 +4001,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
     </div>
   </details>
 </div>
-<hr><h3>Bagian B: Soal W01 — Pengantar, Arsitektur Jaringan &amp; Delay</h3>
+<hr><h3 class="q-section-title">Bagian B: Soal W01 — Pengantar, Arsitektur Jaringan &amp; Delay</h3>
 <div class="box q-item qc-w1" id="soal-11">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <span style="font-weight:700;color:#fff;">Soal #11</span>
@@ -5060,7 +4339,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
     </div>
   </details>
 </div>
-<hr><h3>Bagian C: Soal W02 &amp; W03 — Application Layer, HTTP, DNS, P2P &amp; Email</h3>
+<hr><h3 class="q-section-title">Bagian C: Soal W02 &amp; W03 — Application Layer, HTTP, DNS, P2P &amp; Email</h3>
 <div class="box q-item qc-w2" id="soal-28">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <span style="font-weight:700;color:#fff;">Soal #28</span>
@@ -5329,7 +4608,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
     </div>
   </details>
 </div>
-<div class="box q-item qc-w2" id="soal-42">
+<div class="box q-item qc-w3" id="soal-42">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <span style="font-weight:700;color:#fff;">Soal #42</span>
     <span class="meta" style="color:#38bdf8;">[W03] &bull; Benar / Salah</span>
@@ -5445,7 +4724,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
     </div>
   </details>
 </div>
-<hr><h3>Bagian D: Soal W04 &amp; W05 — Transport Layer, Socket API &amp; Protokol TCP/UDP</h3>
+<hr><h3 class="q-section-title">Bagian D: Soal W04 &amp; W05 — Transport Layer, Socket API &amp; Protokol TCP/UDP</h3>
 <div class="box q-item qc-w4" id="soal-48">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <span style="font-weight:700;color:#fff;">Soal #48</span>
@@ -5532,7 +4811,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
     </div>
   </details>
 </div>
-<div class="box q-item qc-w4" id="soal-53">
+<div class="box q-item qc-w3" id="soal-53">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <span style="font-weight:700;color:#fff;">Soal #53</span>
     <span class="meta" style="color:#38bdf8;">[W03] &bull; Isian Singkat</span>
@@ -5560,7 +4839,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
     </div>
   </details>
 </div>
-<hr><h3>Bagian E: Soal W06, W07 &amp; W08 — Network Layer, Subnet, SDN &amp; Routing</h3>
+<hr><h3 class="q-section-title">Bagian E: Soal W06, W07 &amp; W08 — Network Layer, Subnet, SDN &amp; Routing</h3>
 <div class="box q-item qc-w6" id="soal-55">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <span style="font-weight:700;color:#fff;">Soal #55</span>
@@ -5575,7 +4854,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
     </div>
   </details>
 </div>
-<div class="box q-item qc-w6" id="soal-56">
+<div class="box q-item qc-w7" id="soal-56">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <span style="font-weight:700;color:#fff;">Soal #56</span>
     <span class="meta" style="color:#38bdf8;">[W07] &bull; Benar / Salah</span>
@@ -5593,7 +4872,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
     </div>
   </details>
 </div>
-<div class="box q-item qc-w6" id="soal-57">
+<div class="box q-item qc-w7" id="soal-57">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <span style="font-weight:700;color:#fff;">Soal #57</span>
     <span class="meta" style="color:#38bdf8;">[W07] &bull; Benar / Salah</span>
@@ -5611,7 +4890,7 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
     </div>
   </details>
 </div>
-<div class="box q-item qc-w6" id="soal-58">
+<div class="box q-item qc-w7" id="soal-58">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <span style="font-weight:700;color:#fff;">Soal #58</span>
     <span class="meta" style="color:#38bdf8;">[W07] &bull; Benar / Salah</span>
@@ -5633,40 +4912,93 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
 <script>
 function show(id){
   ['materi','soal'].forEach(function(k){
-    document.getElementById(k).hidden = k!==id;
-    document.getElementById('t-'+k).setAttribute('aria-selected', k===id);
+    var el = document.getElementById(k);
+    if(el) el.hidden = (k !== id);
+    var btn = document.getElementById('t-' + k);
+    if(btn) btn.setAttribute('aria-selected', k === id);
   });
   window.scrollTo(0,0);
-  try{localStorage.setItem('jarkom-tab',id)}catch(e){}
+  try{localStorage.setItem('jarkom-tab', id);}catch(e){}
 }
 function showWeek(n){
   for(var i=1;i<=8;i++){
-    document.getElementById('w'+i).hidden = i!==n;
-    document.getElementById('wb'+i).setAttribute('aria-selected', i===n);
+    var w = document.getElementById('w'+i);
+    if(w) w.hidden = (i !== n);
+    var wb = document.getElementById('wb'+i);
+    if(wb) wb.setAttribute('aria-selected', i === n);
   }
   window.scrollTo(0,0);
-  try{localStorage.setItem('jarkom-week',n)}catch(e){}
+  try{localStorage.setItem('jarkom-week', n);}catch(e){}
 }
 var wk=1;
 try{wk=parseInt(localStorage.getItem('jarkom-week'))||1;}catch(e){}
 showWeek(wk);
-try{var t=localStorage.getItem('jarkom-tab'); if(t==='soal') show('soal');}catch(e){}
+try{
+  var t=localStorage.getItem('jarkom-tab');
+  if(t==='soal') show('soal');
+}catch(e){}
 
 function filterQuiz(cat){
+  var searchInput = document.getElementById('q-search');
+  if(searchInput) searchInput.value = '';
+  var searchMsg = document.getElementById('q-search-msg');
+  if(searchMsg) searchMsg.hidden = true;
+
   var items = document.querySelectorAll('.q-item');
+  var visibleCount = 0;
   items.forEach(function(el){
-    if(cat==='all' || el.classList.contains('qc-'+cat)){
-      el.hidden = false;
-    } else {
-      el.hidden = true;
-    }
+    var match = (cat === 'all' || el.classList.contains('qc-' + cat));
+    el.hidden = !match;
+    if(match) visibleCount++;
   });
+
+  // Toggle section titles: show all section titles if 'all', else hide
+  document.querySelectorAll('.q-section-title').forEach(function(t){
+    t.hidden = (cat !== 'all');
+  });
+
   document.querySelectorAll('.q-filter').forEach(function(b){
-    b.setAttribute('aria-selected', b.id === 'qf-'+cat);
+    b.setAttribute('aria-selected', b.id === 'qf-' + cat);
   });
 }
+
+function searchQuiz(query){
+  var q = query.toLowerCase().trim();
+  var items = document.querySelectorAll('.q-item');
+  var searchMsg = document.getElementById('q-search-msg');
+  var sectionTitles = document.querySelectorAll('.q-section-title');
+
+  if(!q){
+    if(searchMsg) searchMsg.hidden = true;
+    sectionTitles.forEach(function(t){ t.hidden = false; });
+    items.forEach(function(el){ el.hidden = false; });
+    document.querySelectorAll('.q-filter').forEach(function(b){
+      b.setAttribute('aria-selected', b.id === 'qf-all');
+    });
+    return;
+  }
+
+  sectionTitles.forEach(function(t){ t.hidden = true; });
+  document.querySelectorAll('.q-filter').forEach(function(b){
+    b.setAttribute('aria-selected', 'false');
+  });
+
+  var matchCount = 0;
+  items.forEach(function(el){
+    var text = el.textContent.toLowerCase();
+    var match = text.indexOf(q) !== -1;
+    el.hidden = !match;
+    if(match) matchCount++;
+  });
+
+  if(searchMsg){
+    searchMsg.hidden = false;
+    searchMsg.textContent = 'Ditemukan ' + matchCount + ' soal yang cocok dengan kata kunci "' + query + '":';
+  }
+}
+
 function toggleAllAnswers(openState){
-  document.querySelectorAll('.q-item details').forEach(function(d){
+  document.querySelectorAll('#soal details.q-ans').forEach(function(d){
     d.open = openState;
   });
 }
