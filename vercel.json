@@ -1,9 +1,13 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/",
       "destination": "/Jarkom — Belajar UTS.html"
+    },
+    {
+      "source": "/light",
+      "destination": "/Jarkom — Belajar UTS (Light).html"
     }
   ]
 }
-
