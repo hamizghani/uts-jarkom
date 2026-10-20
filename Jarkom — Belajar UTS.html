@@ -761,6 +761,82 @@ dialog#helpDlg .kbd {
     pointer-events: auto;
   }
 }
+
+/* Refined Topics & Filter Chips */
+#soal .chips.topics {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 5px !important;
+  margin-top: 6px !important;
+}
+#soal .chips.topics .chip {
+  display: grid !important;
+  grid-template-columns: 2.2em 1fr auto !important;
+  align-items: center !important;
+  gap: 6px !important;
+  border: 1px solid var(--dim) !important;
+  background: #000 !important;
+  color: #ccc !important;
+  padding: 6px 10px !important;
+  text-align: left !important;
+  border-radius: 0 !important;
+  font-size: 11.5px !important;
+  line-height: 1.4 !important;
+  width: 100% !important;
+  cursor: pointer !important;
+  transition: all 0.1s !important;
+}
+#soal .chips.topics .chip:hover {
+  border-color: #fff !important;
+  background: #151515 !important;
+  color: #fff !important;
+}
+#soal .chips.topics .chip[aria-pressed="true"] {
+  border-color: #fff !important;
+  background: #fff !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+}
+#soal .chips.topics .chip[aria-pressed="true"] .num,
+#soal .chips.topics .chip[aria-pressed="true"] .n {
+  color: #000 !important;
+  font-weight: 700 !important;
+}
+#soal .chips.topics .chip .num {
+  color: var(--muted);
+  text-align: right;
+  font-weight: 700;
+  padding-right: 2px;
+}
+#soal .chips.topics .chip .n {
+  font-size: 11px;
+  color: var(--muted);
+  justify-self: end;
+  white-space: nowrap;
+}
+#soal .chips.topics .chip:disabled {
+  opacity: 0.3 !important;
+  cursor: not-allowed !important;
+}
+#soal button#pAll {
+  width: 100%;
+  padding: 8px 12px;
+  background: #111;
+  border: 1px solid #444;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.1s;
+}
+#soal button#pAll:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
 </style>
 </head>
 <body>
@@ -4305,34 +4381,93 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
 <div class="scrim" id="scrim"></div>
 <div class="wrap" role="region" aria-label="Area Bank Soal">
 <aside id="aside" aria-label="Navigasi dan filter">
-  <section class="block" id="navBlock"><h2>Navigasi soal</h2><div class="qnav" id="qnav"></div>
-    <div class="qnav-legend"><span style="--c:#fff">Belum</span><span style="--c:var(--ok)">Benar</span><span style="--c:#e0a100">Sebagian</span><span style="--c:var(--bad)">Salah</span><span style="--c:#c9c9c9" id="legendSaved">Esai tersimpan</span></div>
-    <div class="finishlink" id="finishWrap" hidden><button type="button" class="btn" id="finishBtn">Finish attempt ...</button></div></section>
-  <section class="block exam-hide"><h2>Filter</h2>
-    <h3><label for="q">Cari</label></h3><input type="search" id="q" placeholder="kata kunci, mis. slow start" autocomplete="off">
-    <h3>Sumber</h3><div class="chips" id="fContrib"></div>
-    <h3><label for="fSrc">Asal dokumen</label></h3><select class="full" id="fSrc"></select>
-    <h3>Cakupan</h3><div class="chips" id="fScope"></div>
-    <div id="prioWrap" hidden><h3>Prioritas</h3><div class="chips" id="fPrio"></div><div id="prioBreak" class="prio-break" hidden></div></div>
-    <h3>Topik</h3><div class="chips topics" id="fTopic"></div>
-    <details class="extra"><summary><svg class="i" aria-hidden="true"><use href="#i-filter"/></svg>Filter tambahan<span class="badge" id="extraCount"></span><svg class="i chev" aria-hidden="true"><use href="#i-right"/></svg></summary>
-      <div id="courseWrap"><h3>Mata kuliah</h3><div class="chips" id="fCourse"></div></div>
-      <h3>Tipe soal</h3><div class="chips" id="fType"></div>
-      <h3>Dasar kunci</h3><div class="chips" id="fKey"></div>
-      <h3>Jenis ujian</h3><div class="chips" id="fExam"></div>
-      <h3>Progres saya</h3><div class="chips" id="fProg"></div>
-      <div class="row" style="margin-top:12px"><button class="btn" id="reset">Reset progres</button></div>
+  <section class="block exam-hide" id="filterBlock">
+    <h2>Filter Soal</h2>
+    
+    <h3><label for="q">Pencarian Kata Kunci</label></h3>
+    <input type="search" id="q" placeholder="Ketik kata kunci (misal: slow start, Dijkstra, subnet, MTU)..." autocomplete="off">
+    
+    <h3>Topik Materi (W01–W08)</h3>
+    <div class="chips topics" id="fTopic"></div>
+
+    <h3>Cakupan Ujian</h3>
+    <div class="chips" id="fScope"></div>
+
+    <h3>Tipe Soal</h3>
+    <div class="chips" id="fType"></div>
+
+    <details class="extra">
+      <summary>
+        <svg class="i" aria-hidden="true"><use href="#i-filter"/></svg>
+        <span>Filter Tambahan</span>
+        <span class="badge" id="extraCount"></span>
+        <svg class="i chev" aria-hidden="true"><use href="#i-right"/></svg>
+      </summary>
+      <div style="margin-top:10px;">
+        <h3><label for="fSrc">Asal Dokumen (52 Sumber)</label></h3>
+        <select class="full" id="fSrc"></select>
+
+        <h3>Sumber Kontributor</h3>
+        <div class="chips" id="fContrib"></div>
+
+        <div id="prioWrap" hidden>
+          <h3>Prioritas</h3>
+          <div class="chips" id="fPrio"></div>
+          <div id="prioBreak" class="prio-break" hidden></div>
+        </div>
+
+        <div id="courseWrap">
+          <h3>Mata Kuliah</h3>
+          <div class="chips" id="fCourse"></div>
+        </div>
+
+        <h3>Dasar Kunci Jawaban</h3>
+        <div class="chips" id="fKey"></div>
+
+        <h3>Jenis Ujian</h3>
+        <div class="chips" id="fExam"></div>
+
+        <h3>Progres Belajar</h3>
+        <div class="chips" id="fProg"></div>
+
+        <div class="row" style="margin-top:14px;">
+          <button class="btn" id="reset" style="width:100%;">Reset Progres Saya</button>
+        </div>
+      </div>
     </details>
-    <div class="row" style="margin-top:12px"><button class="btn" id="pAll">Hapus semua filter</button></div>
+
+    <div class="row" style="margin-top:14px;">
+      <button class="btn" id="pAll">Hapus Semua Filter</button>
+    </div>
   </section>
-  <section class="block legend exam-hide"><h2>Dasar kunci</h2>
-    <p><b>Kunci sumber</b>: baris "The correct answer is" di dokumen asli.</p>
-    <p><b>Ditandai benar</b>: jawaban yang dinilai benar di lembar, tanpa baris kunci.</p>
-    <p><b>Dihitung</b>: kunci tidak tampil; dihitung ulang, langkahnya di penjelasan.</p>
-    <p><b>Jawaban AI</b>: tanpa kunci; disusun dari slide, <b>belum diverifikasi</b>.</p>
-    <p>Pilihan jamak dinilai seperti kuis Moodle: tiap pilihan benar menambah nilai, tiap pilihan salah mengurangi (minimal 0). Isian angka harus berupa angka saja (koma atau titik desimal).</p>
-    <p>Isian singkat dinilai seperti kuis Moodle: teks harus sama persis dengan salah satu jawaban yang diterima (huruf besar/kecil dan spasi di ujung diabaikan).</p>
+
+  <section class="block" id="navBlock">
+    <h2>Navigasi Soal</h2>
+    <div class="qnav" id="qnav"></div>
+    <div class="qnav-legend">
+      <span style="--c:#222">Belum</span>
+      <span style="--c:#4ade80">Benar</span>
+      <span style="--c:#fbbf24">Sebagian</span>
+      <span style="--c:#f87171">Salah</span>
+      <span style="--c:#888" id="legendSaved">Esai</span>
+    </div>
+    <div class="finishlink" id="finishWrap" hidden>
+      <button type="button" class="btn primary" id="finishBtn" style="width:100%;margin-top:10px;">Selesaikan Ujian</button>
+    </div>
   </section>
+
+  <details class="block legend exam-hide" style="padding:10px 14px;border:1px solid var(--dim);background:#050505;">
+    <summary style="cursor:pointer;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);display:flex;align-items:center;justify-content:space-between;list-style:none;">
+      <span>Panduan Dasar Kunci</span>
+      <span style="font-size:10px;color:#666;">[Klik buka]</span>
+    </summary>
+    <div style="margin-top:10px;border-top:1px solid #222;padding-top:8px;font-size:11.5px;color:#aaa;line-height:1.6;">
+      <p style="margin:4px 0;"><b style="color:#fff;">Kunci sumber</b>: baris resmi "The correct answer is" di dokumen SCELE.</p>
+      <p style="margin:4px 0;"><b style="color:#fff;">Ditandai benar</b>: jawaban bernilai 1.00 di lembar kuis mahasiswa.</p>
+      <p style="margin:4px 0;"><b style="color:#fff;">Dihitung</b>: kunci dihitung ulang matematis, langkah di penjelasan.</p>
+      <p style="margin:4px 0;"><b style="color:#fff;">Jawaban AI</b>: disusun dari slide kuliah, belum diverifikasi manual.</p>
+    </div>
+  </details>
 </aside>
 <div>
 <p id="noStore" class="note" hidden>Progres tidak bisa disimpan di tampilan ini (penyimpanan browser diblokir). Unduh file HTML-nya dan buka langsung di Chrome atau Edge agar progres tersimpan.</p>
