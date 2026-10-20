@@ -58,6 +58,11 @@ main {
   max-width: 680px !important;
   margin: 0 auto !important;
 }
+
+/* ==========================================================================
+   BANK SOAL — RETRO MONOCHROME + BLUE ACCENTS DESIGN SYSTEM
+   ========================================================================== */
+
 #soal {
   max-width: 1240px !important;
   margin: 0 auto !important;
@@ -84,13 +89,13 @@ main {
   cursor: pointer;
 }
 #soal a {
-  color: var(--fg);
+  color: #38bdf8;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 #soal a:hover {
-  background: var(--fg);
-  color: var(--bg);
+  background: #38bdf8;
+  color: #000;
   text-decoration: none;
 }
 #soal svg.i {
@@ -104,11 +109,11 @@ main {
   stroke-linejoin: miter;
 }
 
-/* Top Toolbar Bar */
+/* Header & Toolbar */
 #soal header {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 25;
   background: #000;
   border-bottom: 1px solid var(--border);
   margin-bottom: 24px;
@@ -143,8 +148,8 @@ main {
   color: var(--fg);
   background: transparent;
   border: 1px solid var(--border);
-  padding: 5px 12px;
-  border-radius: 0;
+  padding: 6px 14px;
+  border-radius: 2px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -152,7 +157,7 @@ main {
   gap: 6px;
   font-size: 12px;
   font-weight: 600;
-  transition: all 0.1s;
+  transition: all 0.15s ease;
 }
 #soal .btn:hover, #soal .btn:focus-visible {
   background: var(--fg);
@@ -166,7 +171,8 @@ main {
   font-weight: 700;
 }
 #soal .btn.primary:hover {
-  background: #ccc;
+  background: #38bdf8;
+  border-color: #38bdf8;
   color: #000;
 }
 #soal .btn.icon {
@@ -182,24 +188,26 @@ main {
 #soal .seg {
   display: inline-flex;
   border: 1px solid var(--border);
-  border-radius: 0;
+  border-radius: 2px;
   background: #000;
+  overflow: hidden;
 }
 #soal .seg button {
   border: 0;
   background: transparent;
   color: var(--muted);
-  padding: 5px 10px;
+  padding: 5px 11px;
   font-size: 12px;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 5px;
   border-radius: 0;
-  transition: all 0.1s;
+  transition: all 0.12s;
 }
 #soal .seg button:hover {
   color: #fff;
+  background: #111;
 }
 #soal .seg button[aria-pressed="true"] {
   background: #fff;
@@ -210,10 +218,10 @@ main {
   display: none;
 }
 
-/* Layout: Sidebar + Feed */
+/* Layout: Sidebar + Main Area */
 #soal .wrap, #soal main.wrap {
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
+  grid-template-columns: 290px minmax(0, 1fr);
   gap: 28px;
   padding: 0 0 60px;
 }
@@ -230,28 +238,38 @@ main {
   padding-right: 6px;
 }
 #soal aside::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
+}
+#soal aside::-webkit-scrollbar-track {
+  background: #050505;
 }
 #soal aside::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #27272a;
+  border-radius: 2px;
+}
+#soal aside::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
 }
 
 /* Sidebar Blocks */
 #soal .block {
   border: 1px solid var(--dim);
-  background: #050505;
+  background: #070708;
   padding: 14px;
   margin-bottom: 16px;
-  border-radius: 0;
+  border-radius: 3px;
 }
 #soal .block > h2 {
   font: 700 12px/1.3 var(--mono);
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #fff;
   border-bottom: 1px solid var(--dim);
   padding-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 #soal .block h3 {
   font: 700 11px/1.2 var(--mono);
@@ -266,14 +284,314 @@ main {
 #soal .block p {
   margin: 6px 0;
   font-size: 12px;
-  color: #aaa;
+  color: #a1a1aa;
   line-height: 1.6;
 }
-#soal .block p b {
-  color: #fff;
+
+/* ==========================================================================
+   PRIMARY FILTER: 107 SOAL PRIORITAS HIGHLIGHT CARD
+   ========================================================================== */
+#soal .prio-card {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  background: #030e17;
+  border: 1.5px solid #38bdf8;
+  border-radius: 3px;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.12);
+}
+#soal .prio-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+#soal .prio-title {
+  font: 800 12px/1.3 var(--mono);
+  color: #38bdf8;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+#soal .prio-tag {
+  background: #38bdf8;
+  color: #000;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+#soal .prio-desc {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin: 0 0 10px 0;
+}
+#soal #fPrio {
+  width: 100%;
+}
+#soal #fPrio .chip {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 8px 12px !important;
+  border: 1.5px solid #38bdf8 !important;
+  background: #000 !important;
+  color: #38bdf8 !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  border-radius: 2px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+#soal #fPrio .chip:hover {
+  background: rgba(56, 189, 248, 0.15) !important;
+  color: #fff !important;
+}
+#soal #fPrio .chip[aria-pressed="true"] {
+  background: #38bdf8 !important;
+  color: #000 !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4) !important;
+  font-weight: 800 !important;
+}
+#soal #fPrio .chip[aria-pressed="true"] .n {
+  background: #000 !important;
+  color: #38bdf8 !important;
+  padding: 1px 6px !important;
+  border-radius: 2px !important;
+  font-weight: 800 !important;
+}
+#soal .prio-break {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(56, 189, 248, 0.25);
+}
+#soal .pb-head {
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 6px;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+#soal .pb-row {
+  margin-bottom: 6px;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.5);
+  border-left: 2px solid #38bdf8;
+}
+#soal .pb-src {
+  font-weight: 600;
+  color: #e2e8f0;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#soal .pb-num {
+  color: #94a3b8;
+  font-size: 10px;
+  margin: 2px 0;
+}
+#soal .pb-bar {
+  height: 4px;
+  background: #1e293b;
+  border-radius: 2px;
+  overflow: hidden;
+}
+#soal .pb-bar i {
+  display: block;
+  height: 100%;
+  background: #38bdf8;
+  border-radius: 2px;
 }
 
-/* Chips & Search Input */
+/* ==========================================================================
+   PROGRESSIVE BARS DENGAN FILL BIRU (RINGKASAN NILAI PER TOPIK)
+   ========================================================================== */
+.t-prog-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.t-prog-master {
+  padding: 10px 12px;
+  background: #020912;
+  border: 1px solid #1e3a5f;
+  border-radius: 3px;
+}
+.t-prog-row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.t-prog-title {
+  font-size: 11px;
+  color: #e2e8f0;
+  letter-spacing: 0.03em;
+}
+.t-prog-name {
+  font-size: 11.5px;
+  color: #cbd5e1;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+.t-prog-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+  white-space: nowrap;
+}
+.t-prog-sub {
+  font-size: 10px;
+  color: #64748b;
+  font-weight: normal;
+}
+.t-prog-bar {
+  height: 7px;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.t-prog-bar.main {
+  height: 9px;
+  background: #0c1524;
+  border-color: #1e3a5f;
+}
+.t-prog-fill {
+  height: 100%;
+  background: #38bdf8;
+  border-radius: 2px;
+  transition: width 0.35s ease;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.45);
+}
+.t-prog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.t-prog-item {
+  padding: 6px 8px;
+  background: #000;
+  border: 1px solid #18181b;
+  border-radius: 2px;
+  transition: all 0.15s;
+}
+.t-prog-item:hover {
+  border-color: #27272a;
+  background: #09090b;
+}
+.t-prog-item.is-current {
+  border-color: #38bdf8;
+  background: #030e17;
+}
+.t-prog-actions {
+  margin-top: 4px;
+}
+.t-prog-actions .btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 11.5px;
+  padding: 6px 10px;
+  border-color: #27272a;
+  color: #a1a1aa;
+}
+.t-prog-actions .btn:hover:not([disabled]) {
+  border-color: #f87171;
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.08);
+}
+
+/* Focus View Topic Progress Header */
+.focus-summary-box {
+  margin-bottom: 16px;
+}
+.focus-prog-banner {
+  background: #030d17;
+  border: 1.5px solid #1e3a5f;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+.focus-cur-topic {
+  padding: 12px 16px;
+  border-bottom: 1px solid #1e293b;
+}
+.focus-cur-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin-bottom: 8px;
+}
+.focus-cur-tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  background: #0284c7;
+  color: #fff;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.focus-cur-title {
+  font-size: 13px;
+  color: #f1f5f9;
+  letter-spacing: 0.02em;
+  flex: 1;
+}
+.focus-cur-score {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #38bdf8;
+}
+.t-prog-bar.focus-bar {
+  height: 9px;
+  background: #09121f;
+  border: 1px solid #1e3a5f;
+}
+.focus-all-accordion summary {
+  padding: 8px 16px;
+  cursor: pointer;
+  background: #01060c;
+  color: #94a3b8;
+  font-size: 11.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  transition: all 0.12s;
+}
+.focus-all-accordion summary:hover {
+  color: #38bdf8;
+  background: #020914;
+}
+.focus-all-accordion .focus-acc-hint {
+  font-size: 10.5px;
+  color: #64748b;
+}
+.focus-all-accordion .focus-all-body {
+  padding: 12px 16px;
+  border-top: 1px solid #1e293b;
+  background: #02070f;
+}
+
+/* ==========================================================================
+   CHIPS & FILTERS
+   ========================================================================== */
 #soal .chips {
   display: flex;
   flex-wrap: wrap;
@@ -283,15 +601,15 @@ main {
   border: 1px solid var(--dim);
   background: #000;
   color: #ccc;
-  padding: 3px 8px;
-  border-radius: 0;
+  padding: 4px 9px;
+  border-radius: 2px;
   font-size: 11px;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   cursor: pointer;
-  transition: all 0.1s;
+  transition: all 0.12s;
 }
 #soal .chip:hover {
   border-color: #fff;
@@ -303,466 +621,11 @@ main {
   color: #000;
   font-weight: 700;
 }
-#soal .chip .cnt {
-  opacity: 0.7;
+#soal .chip .cnt, #soal .chip .n {
+  opacity: 0.75;
   font-size: 10px;
 }
 
-#soal input[type=search], #soal select.full, #soal select.q, #soal input.q, #soal textarea {
-  width: 100%;
-  padding: 6px 10px;
-  border: 1px solid var(--dim);
-  border-radius: 0;
-  background: #000;
-  color: #fff;
-  font-size: 12px;
-  font-family: var(--mono);
-}
-#soal input[type=search]:focus, #soal select:focus, #soal input:focus, #soal textarea:focus {
-  border-color: #fff;
-  outline: none;
-}
-
-#soal details.extra {
-  margin-top: 10px;
-  border-top: 1px solid var(--dim);
-  padding-top: 8px;
-}
-#soal details.extra > summary {
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 700;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-transform: uppercase;
-}
-#soal details.extra > summary .badge {
-  background: #222;
-  color: #fff;
-  padding: 1px 5px;
-  font-size: 10px;
-  border: 1px solid #444;
-}
-#soal details.extra[open] > summary .chev {
-  transform: rotate(90deg);
-}
-
-/* Question Navigation Grid (QNav) */
-#soal .qnav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  max-height: 220px;
-  overflow-y: auto;
-  padding: 4px 2px;
-}
-#soal .qnav::-webkit-scrollbar {
-  width: 4px;
-}
-#soal .qnav::-webkit-scrollbar-thumb {
-  background: #333;
-}
-
-#soal .qnbutton {
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--dim);
-  background: #000;
-  color: #aaa;
-  border-radius: 0;
-  font-size: 11px;
-  font-weight: 600;
-  text-decoration: none;
-  position: relative;
-  transition: all 0.1s;
-}
-#soal .qnbutton:hover {
-  border-color: #fff;
-  color: #fff;
-}
-#soal .qnbutton.current {
-  border: 1px solid #fff;
-  background: #fff;
-  color: #000;
-  font-weight: 700;
-}
-#soal .qnbutton.answered {
-  background: #1a1a1a;
-  color: #fff;
-}
-#soal .qnbutton.right {
-  border-color: #4ade80;
-  color: #4ade80;
-  background: #052e16;
-}
-#soal .qnbutton.wrong {
-  border-color: #f87171;
-  color: #f87171;
-  background: #3b0707;
-}
-#soal .qnbutton.partial {
-  border-color: #fbbf24;
-  color: #fbbf24;
-  background: #3b2203;
-}
-#soal .qnbutton.flagged::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-top: 7px solid #f87171;
-  border-left: 7px solid transparent;
-}
-
-#soal .qnav-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 10px;
-}
-#soal .qnav-legend span {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-#soal .qnav-legend span::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border: 1px solid #555;
-  background: var(--c);
-  display: inline-block;
-}
-
-/* Question Cards (.que) */
-#soal .que {
-  border: 1px solid var(--border);
-  border-radius: 0;
-  margin-bottom: 28px;
-  background: #050505;
-}
-
-#soal .que .info {
-  background: #000;
-  border-bottom: 1px solid var(--dim);
-  padding: 8px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-#soal .que .info .no {
-  font-weight: 700;
-  color: #fff;
-  font-size: 12px;
-}
-#soal .que .info .status, #soal .que .info .grade {
-  font-variant-numeric: tabular-nums;
-}
-#soal .que .info .questionflag {
-  background: transparent;
-  border: 1px solid var(--dim);
-  color: var(--muted);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 0;
-  cursor: pointer;
-}
-#soal .que .info .questionflag:hover {
-  border-color: #fff;
-  color: #fff;
-}
-#soal .que .info .questionflag[aria-pressed="true"] {
-  border-color: #f87171;
-  color: #f87171;
-  font-weight: 700;
-}
-
-#soal .que .formulation {
-  background: #050505;
-  padding: 18px;
-  color: #fff;
-  font-size: 13.5px;
-  line-height: 1.7;
-}
-#soal .que .formulation .qtext {
-  margin-bottom: 16px;
-}
-#soal .que .formulation .qtext p {
-  margin: 8px 0;
-}
-
-/* Question Options */
-#soal .que .ablock, #soal .que .answer {
-  margin-top: 14px;
-}
-#soal .que .answer .r0, #soal .que .answer .r1 {
-  padding: 8px 12px;
-  margin: 6px 0;
-  border: 1px solid var(--dim);
-  background: #0a0a0a;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  cursor: pointer;
-  transition: all 0.1s;
-}
-#soal .que .answer .r0:hover, #soal .que .answer .r1:hover {
-  border-color: #fff;
-  background: #151515;
-}
-#soal .que .answer input[type=radio], #soal .que .answer input[type=checkbox] {
-  margin-top: 4px;
-  accent-color: #fff;
-  cursor: pointer;
-}
-#soal .que .answer label {
-  cursor: pointer;
-  width: 100%;
-  color: #eee;
-}
-
-/* Action Buttons inside Question */
-#soal .que .formulation .im-controls, #soal .que .formulation .im-feedback {
-  margin-top: 18px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-#soal .que .formulation button.check {
-  background: #fff;
-  border: 1px solid #fff;
-  color: #000;
-  font-weight: 700;
-  padding: 6px 16px;
-  border-radius: 0;
-  cursor: pointer;
-  font-family: var(--mono);
-}
-#soal .que .formulation button.check:hover {
-  background: #ccc;
-}
-#soal .que .formulation button.redo {
-  background: transparent;
-  border: 1px solid var(--dim);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 0;
-  cursor: pointer;
-  font-family: var(--mono);
-}
-#soal .que .formulation button.redo:hover {
-  border-color: #fff;
-}
-
-/* Outcome Alert (Grading) */
-#soal .que .outcome {
-  margin-top: 14px;
-  padding: 10px 14px;
-  border-radius: 0;
-  font-size: 13px;
-  font-weight: 700;
-  border: 1px solid;
-}
-#soal .que .outcome.right, #soal .que .outcome:has(.correct) {
-  background: #052e16;
-  border-color: #4ade80;
-  color: #4ade80;
-}
-#soal .que .outcome.wrong, #soal .que .outcome:has(.incorrect) {
-  background: #3b0707;
-  border-color: #f87171;
-  color: #f87171;
-}
-#soal .que .outcome.part, #soal .que .outcome:has(.partiallycorrect) {
-  background: #3b2203;
-  border-color: #fbbf24;
-  color: #fbbf24;
-}
-
-/* Explanation / Comment Box */
-#soal .que .comment {
-  background: #03140d;
-  border: 1px solid #14532d;
-  padding: 14px;
-  margin-top: 14px;
-  color: #bbf7d0;
-  font-size: 13px;
-  line-height: 1.6;
-}
-#soal .que .comment .rightanswer {
-  font-weight: 700;
-  color: #4ade80;
-  margin-bottom: 6px;
-}
-#soal .que .comment p {
-  margin: 6px 0;
-}
-#soal .que .comment code, #soal .que .formulation code {
-  background: #000;
-  border: 1px solid #333;
-  color: #fff;
-  padding: 2px 6px;
-  font-family: var(--mono);
-  font-size: 12px;
-}
-
-/* Figures & Diagrams */
-#soal .figs {
-  margin: 14px 0;
-  text-align: center;
-}
-#soal .figs img, #soal .qtext img {
-  background: #ffffff;
-  padding: 8px;
-  border: 1px solid #333;
-  max-width: 100%;
-  height: auto;
-  display: inline-block;
-}
-
-/* Code Blocks */
-#soal pre.code {
-  background: #000;
-  border: 1px solid var(--dim);
-  color: #eee;
-  padding: 12px;
-  font-family: var(--mono);
-  font-size: 12px;
-  overflow-x: auto;
-}
-
-/* Drag & Drop Cloze */
-#soal .drop {
-  border: 1px dashed #666;
-  background: #111;
-  color: #fff;
-  padding: 2px 8px;
-  display: inline-block;
-  min-width: 60px;
-  text-align: center;
-}
-#soal .drop.filled {
-  border-style: solid;
-  border-color: #fff;
-}
-#soal .drags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 12px;
-}
-#soal .drag {
-  border: 1px solid #fff;
-  background: #000;
-  color: #fff;
-  padding: 3px 8px;
-  cursor: pointer;
-  font-size: 12px;
-}
-#soal .drag:hover {
-  background: #fff;
-  color: #000;
-}
-
-/* Dialog */
-dialog#helpDlg {
-  background: #000;
-  border: 1px solid var(--border);
-  color: #fff;
-  border-radius: 0;
-  padding: 24px;
-  max-width: 520px;
-  font-family: var(--mono);
-}
-dialog#helpDlg::backdrop {
-  background: rgba(0, 0, 0, 0.85);
-}
-dialog#helpDlg h2 {
-  color: #fff;
-  margin: 0 0 16px 0;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-dialog#helpDlg table {
-  width: 100%;
-  border-collapse: collapse;
-}
-dialog#helpDlg td {
-  padding: 6px 4px;
-  border-bottom: 1px solid #222;
-  font-size: 12px;
-}
-dialog#helpDlg .kbd {
-  background: #1a1a1a;
-  border: 1px solid #444;
-  color: #fff;
-  padding: 2px 6px;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-}
-
-/* Responsive */
-@media (max-width: 860px) {
-  #soal .wrap, #soal main.wrap {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  #soal .filters-toggle {
-    display: inline-flex;
-  }
-  #soal aside {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 290px;
-    max-height: 100vh;
-    z-index: 50;
-    transform: translateX(-100%);
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    background: #050505;
-    border-right: 1px solid var(--border);
-    padding: 16px;
-  }
-  #soal aside.open {
-    transform: translateX(0);
-  }
-  #soal .scrim {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 45;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-  #soal .scrim.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
-/* Refined Topics & Filter Chips */
 #soal .chips.topics {
   display: flex !important;
   flex-direction: column !important;
@@ -780,16 +643,16 @@ dialog#helpDlg .kbd {
   color: #ccc !important;
   padding: 6px 10px !important;
   text-align: left !important;
-  border-radius: 0 !important;
+  border-radius: 2px !important;
   font-size: 11.5px !important;
   line-height: 1.4 !important;
   width: 100% !important;
   cursor: pointer !important;
-  transition: all 0.1s !important;
+  transition: all 0.12s !important;
 }
 #soal .chips.topics .chip:hover {
   border-color: #fff !important;
-  background: #151515 !important;
+  background: #111 !important;
   color: #fff !important;
 }
 #soal .chips.topics .chip[aria-pressed="true"] {
@@ -819,6 +682,47 @@ dialog#helpDlg .kbd {
   opacity: 0.3 !important;
   cursor: not-allowed !important;
 }
+
+#soal input[type=search], #soal select.full, #soal select.q, #soal input.q, #soal textarea {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--dim);
+  border-radius: 2px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-family: var(--mono);
+}
+#soal input[type=search]:focus, #soal select:focus, #soal input:focus, #soal textarea:focus {
+  border-color: #38bdf8;
+  outline: none;
+}
+
+#soal details.extra {
+  margin-top: 10px;
+  border-top: 1px solid var(--dim);
+  padding-top: 8px;
+}
+#soal details.extra > summary {
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+#soal details.extra > summary .badge {
+  background: #222;
+  color: #fff;
+  padding: 1px 5px;
+  font-size: 10px;
+  border: 1px solid #444;
+}
+#soal details.extra[open] > summary .chev {
+  transform: rotate(90deg);
+}
 #soal button#pAll {
   width: 100%;
   padding: 8px 12px;
@@ -829,7 +733,8 @@ dialog#helpDlg .kbd {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  transition: all 0.1s;
+  transition: all 0.12s;
+  border-radius: 2px;
 }
 #soal button#pAll:hover {
   background: #fff;
@@ -837,6 +742,700 @@ dialog#helpDlg .kbd {
   border-color: #fff;
 }
 
+/* ==========================================================================
+   QUESTION NAVIGATION GRID (QNAV)
+   ========================================================================== */
+#soal .qnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 4px 2px;
+}
+#soal .qnav::-webkit-scrollbar {
+  width: 4px;
+}
+#soal .qnav::-webkit-scrollbar-thumb {
+  background: #333;
+}
+#soal .qnbutton {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--dim);
+  background: #000;
+  color: #aaa;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.1s;
+}
+#soal .qnbutton:hover {
+  border-color: #fff;
+  color: #fff;
+}
+#soal .qnbutton.current {
+  border: 1px solid #38bdf8;
+  background: #38bdf8;
+  color: #000;
+  font-weight: 800;
+}
+#soal .qnbutton.answered {
+  background: #1e293b;
+  color: #fff;
+  border-color: #334155;
+}
+#soal .qnbutton.right {
+  border-color: #4ade80;
+  color: #4ade80;
+  background: #052e16;
+}
+#soal .qnbutton.wrong {
+  border-color: #f87171;
+  color: #f87171;
+  background: #3b0707;
+}
+#soal .qnbutton.partial {
+  border-color: #fbbf24;
+  color: #fbbf24;
+  background: #3b2203;
+}
+#soal .qnbutton.flagged::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 7px solid #f87171;
+  border-left: 7px solid transparent;
+}
+#soal .qnav-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+#soal .qnav-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+#soal .qnav-legend span::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 1px solid #555;
+  background: var(--c);
+  display: inline-block;
+}
+
+/* ==========================================================================
+   QUESTION CARDS (.que) & RICH OPTIONS (.r)
+   ========================================================================== */
+#soal .listhead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 0 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--dim);
+}
+#soal .listhead .count {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+#soal .listhead .note {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+#soal .que {
+  border: 1px solid #27272a;
+  border-radius: 4px;
+  margin-bottom: 28px;
+  background: #09090b;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+#soal .que .info {
+  background: #020203;
+  border-bottom: 1px solid #27272a;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+#soal .que .info .no {
+  font-weight: 700;
+  color: #fff;
+  font-size: 13px;
+  margin: 0;
+}
+#soal .que .info .state, #soal .que .info .grade {
+  font-variant-numeric: tabular-nums;
+  color: #cbd5e1;
+}
+#soal .que .info .questionflag {
+  background: transparent;
+  border: 1px solid #3f3f46;
+  color: #a1a1aa;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+#soal .que .info .questionflag:hover {
+  border-color: #fff;
+  color: #fff;
+}
+#soal .que .info .questionflag[aria-pressed="true"] {
+  border-color: #f87171;
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.12);
+  font-weight: 700;
+}
+#soal .que .info .src {
+  font-size: 11px;
+  color: #a1a1aa;
+  background: #141416;
+  border: 1px solid #27272a;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+#soal .que .info .badge-priority {
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid #38bdf8;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+#soal .que .formulation {
+  background: #09090b;
+  padding: 20px 22px;
+  color: #f4f4f5;
+  font-size: 14px;
+  line-height: 1.7;
+}
+#soal .que .formulation .qtext {
+  margin-bottom: 16px;
+}
+#soal .que .formulation .qtext p {
+  margin: 8px 0;
+}
+
+/* Question Option Cards */
+#soal .que .ablock {
+  margin-top: 16px;
+}
+#soal .que .prompt {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a1a1aa;
+  margin-bottom: 8px;
+}
+#soal .que .answer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#soal .que .answer .r {
+  padding: 10px 14px;
+  border: 1px solid #27272a;
+  background: #000;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+#soal .que .answer .r:hover {
+  border-color: #71717a;
+  background: #111113;
+}
+#soal .que .answer .r:has(input:checked) {
+  border-color: #fff;
+  background: #18181b;
+}
+#soal .que .answer .r input[type=radio], 
+#soal .que .answer .r input[type=checkbox] {
+  margin-top: 3px;
+  accent-color: #38bdf8;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+#soal .que .answer .r label {
+  cursor: pointer;
+  width: 100%;
+  color: #e4e4e7;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+#soal .que .answer .r .ltr {
+  display: inline-block;
+  width: 22px;
+  font-weight: 700;
+  color: #a1a1aa;
+  flex-shrink: 0;
+}
+#soal .que .answer .r .m {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 8px;
+}
+
+/* Graded States for Options */
+#soal .que .answer .r.correct {
+  border-color: #4ade80 !important;
+  background: rgba(74, 222, 128, 0.08) !important;
+  color: #4ade80 !important;
+}
+#soal .que .answer .r.incorrect {
+  border-color: #f87171 !important;
+  background: rgba(248, 113, 113, 0.08) !important;
+  color: #f87171 !important;
+}
+#soal .mk.ok {
+  color: #4ade80;
+}
+#soal .mk.no {
+  color: #f87171;
+}
+
+/* Action Buttons inside Question */
+#soal .que .formulation .im-controls {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#soal .que .formulation button.chk {
+  background: #fff;
+  border: 1px solid #fff;
+  color: #000;
+  font-weight: 700;
+  padding: 7px 18px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  transition: all 0.15s ease;
+}
+#soal .que .formulation button.chk:hover {
+  background: #38bdf8;
+  border-color: #38bdf8;
+  color: #000;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+#soal .que .formulation button.redo {
+  background: transparent;
+  border: 1px solid #3f3f46;
+  color: #e4e4e7;
+  padding: 7px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+#soal .que .formulation button.redo:hover {
+  border-color: #fff;
+  color: #fff;
+  background: #18181b;
+}
+
+/* Outcome & Feedback Box */
+#soal .que .outcome {
+  margin: 18px 0 0;
+  padding: 14px 18px;
+  border-radius: 3px;
+  background: #020203;
+  border: 1px solid #27272a;
+}
+#soal .que .outcome .fb {
+  font-weight: 800;
+  font-size: 13.5px;
+  margin-bottom: 8px;
+}
+#soal .que .outcome:has(.mk.ok) .fb, #soal .que.right .fb {
+  color: #4ade80;
+}
+#soal .que .outcome:has(.mk.no) .fb, #soal .que.wrong .fb {
+  color: #f87171;
+}
+#soal .que .outcome .rightanswer {
+  background: rgba(56, 189, 248, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 10px 14px;
+  border-radius: 2px;
+  color: #f0f9ff;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+#soal .que .outcome .basis {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  background: #0284c7;
+  color: #fff;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+#soal .que .outcome .meta {
+  background: #031424;
+  border-left: 3px solid #38bdf8;
+  padding: 12px 14px;
+  margin-top: 10px;
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.7;
+}
+#soal .que .outcome .comment {
+  background: #140b1e;
+  border-left: 3px solid #a855f7;
+  padding: 10px 14px;
+  margin-top: 10px;
+  color: #e9d5ff;
+  font-size: 12.5px;
+}
+
+/* Matching Questions Table */
+#soal table.match {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+#soal table.match td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #27272a;
+}
+#soal table.match td.text {
+  color: #f4f4f5;
+  width: 60%;
+}
+#soal table.match select.q {
+  padding: 6px 10px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #3f3f46;
+  border-radius: 2px;
+  width: 100%;
+}
+
+/* Drag and Drop Cloze */
+#soal .drop {
+  border: 1.5px dashed #52525b;
+  background: #141416;
+  color: #38bdf8;
+  padding: 3px 10px;
+  display: inline-block;
+  min-width: 70px;
+  text-align: center;
+  border-radius: 2px;
+  margin: 0 4px;
+  vertical-align: middle;
+}
+#soal .drop.over {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+}
+#soal .drop.filled {
+  border-style: solid;
+  border-color: #fff;
+  color: #fff;
+}
+#soal .drop.correct {
+  border-color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+}
+#soal .drop.incorrect {
+  border-color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+}
+#soal .pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 12px;
+  background: #050505;
+  border: 1px solid #27272a;
+  border-radius: 2px;
+}
+#soal .draghome {
+  border: 1px solid #38bdf8;
+  background: #030e17;
+  color: #38bdf8;
+  padding: 4px 10px;
+  cursor: grab;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 2px;
+  transition: all 0.12s;
+}
+#soal .draghome:hover {
+  background: #38bdf8;
+  color: #000;
+}
+#soal .draghome:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Numerical / Short Answer */
+#soal .ansline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+}
+#soal .ansline label {
+  font-weight: 700;
+  color: #a1a1aa;
+}
+#soal .ansline input.q {
+  max-width: 280px;
+  padding: 7px 12px;
+}
+#soal .ansline input.q.correct {
+  border-color: #4ade80;
+  color: #4ade80;
+}
+#soal .ansline input.q.incorrect {
+  border-color: #f87171;
+  color: #f87171;
+}
+
+/* Essay Self-Marking */
+#soal .selfmark {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #000;
+  border: 1px solid #27272a;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  border-radius: 2px;
+}
+#soal .selfmark input[type=number] {
+  width: 70px;
+  padding: 4px 8px;
+  background: #111;
+  border: 1px solid #3f3f46;
+  color: #fff;
+}
+#soal .selfmark button.selfsave {
+  padding: 5px 12px;
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  border: 1px solid #fff;
+}
+
+/* Focus View Outer & Navigation */
+#soal .focuswrap {
+  display: flex;
+  flex-direction: column;
+}
+#soal .focuswrap .progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+#soal .focuswrap .progress .track {
+  flex: 1;
+  height: 6px;
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 2px;
+  overflow: hidden;
+}
+#soal .focuswrap .progress .track span {
+  display: block;
+  height: 100%;
+  background: #38bdf8;
+  border-radius: 2px;
+}
+#soal .focuswrap .progress .pos {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a1a1aa;
+  white-space: nowrap;
+}
+#soal .focusnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0 0;
+}
+#soal .focusnav .hint {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--muted);
+}
+#soal .focusnav .kbd, dialog#helpDlg .kbd {
+  background: #18181b;
+  border: 1px solid #3f3f46;
+  color: #fff;
+  padding: 2px 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 2px;
+}
+
+/* Figures & Diagrams */
+#soal .figs {
+  margin: 14px 0;
+  text-align: center;
+}
+#soal .figs img, #soal .qtext img {
+  background: #ffffff;
+  padding: 8px;
+  border: 1px solid #333;
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+/* Code Blocks */
+#soal pre.code {
+  background: #000;
+  border: 1px solid var(--dim);
+  color: #eee;
+  padding: 12px;
+  font-family: var(--mono);
+  font-size: 12px;
+  overflow-x: auto;
+}
+
+/* Pager */
+#soal .pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 24px;
+}
+#soal .pager button[aria-current="page"] {
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+}
+
+/* Dialog */
+dialog#helpDlg {
+  background: #000;
+  border: 1px solid var(--border);
+  color: #fff;
+  border-radius: 2px;
+  padding: 24px;
+  max-width: 520px;
+  font-family: var(--mono);
+}
+dialog#helpDlg::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
+dialog#helpDlg h2 {
+  color: #fff;
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+dialog#helpDlg table {
+  width: 100%;
+  border-collapse: collapse;
+}
+dialog#helpDlg td {
+  padding: 6px 4px;
+  border-bottom: 1px solid #222;
+  font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  #soal .wrap, #soal main.wrap {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  #soal .filters-toggle {
+    display: inline-flex;
+  }
+  #soal aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    max-height: 100vh;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #070708;
+    border-right: 1px solid var(--border);
+    padding: 16px;
+  }
+  #soal aside.open {
+    transform: translateX(0);
+  }
+  #soal .scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 45;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  #soal .scrim.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
 </style>
 </head>
 <body>
@@ -4383,6 +4982,17 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
 <aside id="aside" aria-label="Navigasi dan filter">
   <section class="block exam-hide" id="filterBlock">
     <h2>Filter Soal</h2>
+
+    <!-- HIGHLIGHT 107 SOAL PRIORITAS UTAMA (FILTER UTAMA) -->
+    <div id="prioWrap" class="prio-card" hidden>
+      <div class="prio-card-header">
+        <span class="prio-title">⭐ 107 Soal Prioritas Utama</span>
+        <span class="prio-tag">Wajib UTS</span>
+      </div>
+      <p class="prio-desc">Kompilasi 107 soal terpenting &amp; paling sering keluar dari kuis SCELE serta arsip UTS. Kuasai soal-soal ini terlebih dahulu!</p>
+      <div class="chips" id="fPrio"></div>
+      <div id="prioBreak" class="prio-break" hidden></div>
+    </div>
     
     <h3><label for="q">Pencarian Kata Kunci</label></h3>
     <input type="search" id="q" placeholder="Ketik kata kunci (misal: slow start, Dijkstra, subnet, MTU)..." autocomplete="off">
@@ -4410,12 +5020,6 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
         <h3>Sumber Kontributor</h3>
         <div class="chips" id="fContrib"></div>
 
-        <div id="prioWrap" hidden>
-          <h3>Prioritas</h3>
-          <div class="chips" id="fPrio"></div>
-          <div id="prioBreak" class="prio-break" hidden></div>
-        </div>
-
         <div id="courseWrap">
           <h3>Mata Kuliah</h3>
           <div class="chips" id="fCourse"></div>
@@ -4439,6 +5043,12 @@ Host bits = 6 → Block size = 64. Broadcast = 192.168.10.127. Usable host = .65
     <div class="row" style="margin-top:14px;">
       <button class="btn" id="pAll">Hapus Semua Filter</button>
     </div>
+  </section>
+
+  <!-- RINGKASAN NILAI PER TOPIK (SIDEBAR UNTUK TAMPILAN SEMUA SOAL) -->
+  <section class="block exam-hide" id="summarySidebarBlock">
+    <h2>Ringkasan Nilai per Topik</h2>
+    <div id="topicProgressSidebar"></div>
   </section>
 
   <section class="block" id="navBlock">
@@ -4666,7 +5276,12 @@ function renderFilters(){
   const sb=matching("scopes");
   chipGroup($("fScope"),Object.entries(DATA.scopes).map(([k,ts])=>[k,`${k} (topik ${ts[0]}–${ts[ts.length-1]})`,sb.filter(q=>q.topics.some(t=>ts.includes(t))).length]),st.scopes);
   const np=DATA.questions.filter(q=>q.priority!=null).length;$("prioWrap").hidden=!np;
-  if(np)chipGroup($("fPrio"),[["p","Hanya soal prioritas, urut",matching("prios").filter(q=>q.priority!=null).length]],st.prios);
+  if(np){
+    const activeCount=matching("prios").filter(q=>q.priority!=null).length;
+    const isPrioActive=st.prios.has("p");
+    const prioLabel=isPrioActive?"✓ 107 Soal Prioritas Aktif":"⭐ Tampilkan 107 Soal Prioritas";
+    chipGroup($("fPrio"),[["p",prioLabel,activeCount]],st.prios);
+  }
   /* Breakdown of the whole priority set by source document: how many of the set each source gives, and how much of that source made it in. Counted on the whole bank, not on the other filters, so the numbers stay put while you filter. */
   const pb=$("prioBreak");pb.hidden=!(np&&st.prios.size);
   if(np&&st.prios.size){
@@ -4732,7 +5347,7 @@ function card(q){
       <div class="state" aria-live="polite"></div><div class="grade"></div>
       <div><button type="button" class="questionflag" aria-pressed="${!!flags[q.id]}" title="Flag question (F)">${icon("flag")}<span>${flags[q.id]?"Remove flag":"Flag question"}</span></button></div>
       ${EXAM?"":`<div class="src"><b>${esc(s.contributor||"")}</b> · ${esc(s.label)}${q.number!=null?` · No. ${esc(q.number)}`:""}</div>`}
-      ${EXAM&&phase()!=="review"?"":`<div class="src">${esc(TYPE_LABEL[t]||t)} · Topik ${esc(q.topics.join(", "))}</div>`}${q.priority!=null?`<div class="src" title="${esc(q.priority_reason||"")}"><b>Prioritas #${q.priority}</b>${q.priority_reason?` · ${esc(q.priority_reason)}`:""}</div>`:""}
+      ${EXAM&&phase()!=="review"?"":`<div class="src">${esc(TYPE_LABEL[t]||t)} · Topik ${esc(q.topics.join(", "))}</div>`}${q.priority!=null?`<div class="badge-priority" title="${esc(q.priority_reason||"")}">⭐ <b>Prioritas #${q.priority}</b>${q.priority_reason?` · ${esc(q.priority_reason)}`:""}</div>`:""}
     </div>
     <div class="content"><div class="formulation">${c?`<details class="case"><summary>Studi kasus: ${esc(c.title||c.id)}</summary>${md(c.text)}${figs(c)}</details>`:""}
       <div class="qtext">${qtextHtml(q)}</div>${figs(q)}
@@ -4882,27 +5497,140 @@ function updateStats(){
   const right=vals.filter(x=>x.s==="right").length;
   $("stats").textContent=`${DATA.questions.length} soal · dikerjakan ${vals.length} · benar ${right}`;
 }
-function summary(qs){
+function topicProgressStats(qs){
+  let totAll=0,gotAll=0,doneAll=0;
   const rows=Object.entries(DATA.topics).sort((a,b)=>topicCmp(a[0],b[0])).map(([t,name])=>{
-    const inT=qs.filter(q=>q.topics.includes(t));if(!inT.length)return"";
-    let got=0,tot=0,done=0;inT.forEach(q=>{const r=res[q.id];if(r&&r.mark!=null){done++;got+=r.mark;tot+=ptsOf(q)}});
+    const inT=qs.filter(q=>q.topics.includes(t));
+    if(!inT.length)return null;
+    let got=0,tot=0,done=0;
+    inT.forEach(q=>{
+      const r=res[q.id];
+      if(r&&r.mark!=null){done++;got+=r.mark;tot+=ptsOf(q)}
+    });
+    totAll+=tot;gotAll+=got;doneAll+=done;
     const pct=tot?Math.round(got/tot*100):0;
-    return `<div class="sumrow"><span>${esc(name)}</span><span class="meter" role="img" aria-label="${pct}% nilai"><span style="width:${pct}%"></span></span><span class="v">${pct}% · ${done}/${inT.length} soal</span></div>`;
-  }).join("");
-  const wrong=qs.filter(q=>["wrong","partial"].includes(stateOf(q))).length;
-  return `<details class="summary"${store.get("sumOpen",false)?" open":""}><summary>${icon("chart")}Ringkasan nilai per topik</summary>
-    <div class="sumgrid">${rows||'<div class="note">Belum ada soal.</div>'}
-    <div class="row" style="margin-top:6px"><button type="button" class="btn" id="redoWrong"${wrong?"":" disabled"}>${icon("redo")}Ulangi yang salah (${wrong})</button></div></div></details>`;
+    const m=String(name).match(/^(\d+[a-z]?)\.\s+(.*)$/i);
+    const shortName=m?`W0${m[1]} · ${m[2]}`:name;
+    return {t,name,shortName,pct,done,total:inT.length};
+  }).filter(Boolean);
+  const overallPct=totAll?Math.round(gotAll/totAll*100):0;
+  return {rows,totAll,gotAll,doneAll,overallPct};
 }
-function bindSummary(){
-  const sd=document.querySelector("details.summary");sd.ontoggle=()=>store.set("sumOpen",sd.open);
-  const rw=$("redoWrong");if(rw)rw.onclick=()=>{const ids=st.ids.filter(id=>["wrong","partial"].includes(stateOf(qById[id])));
+
+function summaryRowsHtml(qs){
+  const stats=topicProgressStats(qs);
+  const wrong=qs.filter(q=>["wrong","partial"].includes(stateOf(q))).length;
+  let h=`<div class="t-prog-container">`;
+  h+=`<div class="t-prog-master">
+    <div class="t-prog-row-head">
+      <span class="t-prog-title"><b>Total Nilai Selesai</b></span>
+      <span class="t-prog-num"><b>${stats.overallPct}%</b> <span class="t-prog-sub">(${stats.doneAll}/${qs.length} soal)</span></span>
+    </div>
+    <div class="t-prog-bar main"><div class="t-prog-fill" style="width:${stats.overallPct}%"></div></div>
+  </div>`;
+
+  h+=`<div class="t-prog-list">`;
+  for(const r of stats.rows){
+    h+=`<div class="t-prog-item" data-topic="${r.t}">
+      <div class="t-prog-row-head">
+        <span class="t-prog-name" title="${esc(r.name)}">${esc(r.shortName)}</span>
+        <span class="t-prog-num">${r.pct}% <span class="t-prog-sub">(${r.done}/${r.total})</span></span>
+      </div>
+      <div class="t-prog-bar"><div class="t-prog-fill" style="width:${r.pct}%"></div></div>
+    </div>`;
+  }
+  h+=`</div>`;
+
+  h+=`<div class="t-prog-actions">
+    <button type="button" class="btn redo-wrong-btn"${wrong?"":" disabled"}><svg class="i" aria-hidden="true"><use href="#i-redo"/></svg>Ulangi Soal Salah (${wrong})</button>
+  </div>`;
+  h+=`</div>`;
+  return h;
+}
+
+function focusSummaryHtml(qs, currentQ){
+  const stats=topicProgressStats(qs);
+  const curTopicId=currentQ && currentQ.topics && currentQ.topics[0];
+  const curTopicRow=stats.rows.find(r=>r.t===curTopicId) || stats.rows[0];
+  const wrong=qs.filter(q=>["wrong","partial"].includes(stateOf(q))).length;
+
+  let h=`<div class="focus-prog-banner">`;
+  if(curTopicRow){
+    h+=`<div class="focus-cur-topic">
+      <div class="focus-cur-head">
+        <span class="focus-cur-tag">Progres Topik Soal Ini</span>
+        <span class="focus-cur-title"><b>${esc(curTopicRow.name)}</b></span>
+        <span class="focus-cur-score">${curTopicRow.pct}% <span class="t-prog-sub">(${curTopicRow.done}/${curTopicRow.total} soal)</span></span>
+      </div>
+      <div class="t-prog-bar focus-bar"><div class="t-prog-fill" style="width:${curTopicRow.pct}%"></div></div>
+    </div>`;
+  }
+
+  h+=`<details class="focus-all-accordion">
+    <summary>
+      <span>Lihat Progres Seluruh Topik (Rata-rata: ${stats.overallPct}%)</span>
+      <span class="focus-acc-hint">[Buka / Tutup]</span>
+    </summary>
+    <div class="focus-all-body">
+      <div class="t-prog-master" style="margin-bottom:12px;">
+        <div class="t-prog-row-head">
+          <span class="t-prog-title"><b>Rata-rata Keseluruhan</b></span>
+          <span class="t-prog-num"><b>${stats.overallPct}%</b> <span class="t-prog-sub">(${stats.doneAll}/${qs.length} soal)</span></span>
+        </div>
+        <div class="t-prog-bar main"><div class="t-prog-fill" style="width:${stats.overallPct}%"></div></div>
+      </div>
+      <div class="t-prog-list">`;
+  for(const r of stats.rows){
+    const isActive=r.t===curTopicId;
+    h+=`<div class="t-prog-item${isActive?" is-current":""}" data-topic="${r.t}">
+      <div class="t-prog-row-head">
+        <span class="t-prog-name">${isActive?"👉 ":""}${esc(r.shortName)}</span>
+        <span class="t-prog-num">${r.pct}% <span class="t-prog-sub">(${r.done}/${r.total})</span></span>
+      </div>
+      <div class="t-prog-bar"><div class="t-prog-fill" style="width:${r.pct}%"></div></div>
+    </div>`;
+  }
+  h+=`</div>
+      <div class="t-prog-actions" style="margin-top:10px;">
+        <button type="button" class="btn redo-wrong-btn"${wrong?"":" disabled"}><svg class="i" aria-hidden="true"><use href="#i-redo"/></svg>Ulangi Soal Salah (${wrong})</button>
+      </div>
+    </div>
+  </details>`;
+  h+=`</div>`;
+  return h;
+}
+
+function bindRedoWrong(container){
+  if(!container)return;
+  const rw=container.querySelector(".redo-wrong-btn");
+  if(rw)rw.onclick=()=>{
+    const ids=st.ids.filter(id=>["wrong","partial"].includes(stateOf(qById[id])));
     ids.forEach(id=>{delete res[id];delete resp[id]});save();st.progs=new Set();st.order=null;
     st.src="";["scopes","contribs","courses","topics","exams","types","keys"].forEach(k=>st[k]=new Set());
     const keep=new Set(ids);st.order={};DATA.questions.forEach((q,i)=>st.order[q.id]=keep.has(q.id)?i:1e6+i);
-    st.only=keep;setView("focus");st.idx=0;render()};
+    st.only=keep;setView("focus");st.idx=0;render();
+  };
 }
-function refreshSummary(){if(EXAM){const o=$("reviewSum");if(o){o.outerHTML=reviewHtml();bindReview()}return}const old=document.querySelector("details.summary");if(!old)return;old.insertAdjacentHTML("afterend",summary(st.ids.map(id=>qById[id])));old.remove();bindSummary()}
+
+function refreshSummary(){
+  if(EXAM){
+    const o=$("reviewSum");if(o){o.outerHTML=reviewHtml();bindReview()}
+    return;
+  }
+  const qs=st.ids.map(id=>qById[id]).filter(Boolean);
+  if(st.view==="list"){
+    const sb=$("topicProgressSidebar");
+    if(sb){sb.innerHTML=summaryRowsHtml(qs);bindRedoWrong(sb)}
+  }else if(st.view==="focus"){
+    const fb=$("focusTopicProgress");
+    if(fb){
+      const q=qById[st.ids[st.idx]];
+      fb.innerHTML=focusSummaryHtml(qs,q);
+      bindRedoWrong(fb);
+    }
+  }
+}
+
 function render(){
   if(EXAM){renderExam();return}
   renderFilters();
@@ -4910,33 +5638,76 @@ function render(){
   let qs=filtered();if(st.only){qs=qs.filter(q=>st.only.has(q.id));if(!qs.length)st.only=null}
   st.ids=qs.map(q=>q.id);st.active=null;
   const list=$("list");list.innerHTML="";
+
   const head=document.createElement("div");head.className="listhead";
   head.innerHTML=`<span class="count">${qs.length} soal</span><span class="note">${st.view==="focus"?"Satu soal per halaman":"Semua soal"} · mode ${st.mode==="practice"?"Latihan":"Belajar"}</span>${st.only?`<button type="button" class="btn" id="clearOnly">Tampilkan semua lagi</button>`:""}`;
-  list.appendChild(head);if(st.only)$("clearOnly").onclick=()=>{st.only=null;st.order=null;st.progs=new Set();render()};
-  list.insertAdjacentHTML("beforeend",summary(qs));bindSummary();
+  list.appendChild(head);
+  if(st.only)$("clearOnly").onclick=()=>{st.only=null;st.order=null;st.progs=new Set();render()};
+
+  // Progress Bar placement: Sidebar for List view
+  const summaryBlock=$("summarySidebarBlock");
+  if(st.view==="list"){
+    if(summaryBlock){
+      summaryBlock.hidden=false;
+      const sb=$("topicProgressSidebar");
+      if(sb){sb.innerHTML=summaryRowsHtml(qs);bindRedoWrong(sb)}
+    }
+  }else{
+    if(summaryBlock) summaryBlock.hidden=true;
+  }
+
   navPaint();
-  if(!qs.length){list.insertAdjacentHTML("beforeend",`<div class="empty">Tidak ada soal yang cocok dengan filter.<br><button type="button" class="btn" style="margin-top:12px" id="emptyReset">Hapus semua filter</button></div>`);$("emptyReset").onclick=()=>$("pAll").click();updateStats();return}
-  if(st.view==="focus"){st.idx=Math.min(st.idx,qs.length-1);drawFocus()}
-  else{
+  if(!qs.length){
+    list.insertAdjacentHTML("beforeend",`<div class="empty">Tidak ada soal yang cocok dengan filter.<br><button type="button" class="btn" style="margin-top:12px" id="emptyReset">Hapus semua filter</button></div>`);
+    $("emptyReset").onclick=()=>$("pAll").click();
+    updateStats();
+    return;
+  }
+  if(st.view==="focus"){
+    st.idx=Math.min(st.idx,qs.length-1);
+    drawFocus();
+  }else{
     const pages=Math.ceil(qs.length/PAGE);st.page=Math.min(st.page,pages);
     qs.slice((st.page-1)*PAGE,st.page*PAGE).forEach(q=>list.appendChild(card(q).el));
-    if(pages>1){const pg=document.createElement("nav");pg.className="pager";pg.setAttribute("aria-label","Halaman");
-      for(let i=1;i<=pages;i++){const b=document.createElement("button");b.type="button";b.className="btn";b.textContent=i;if(i===st.page)b.setAttribute("aria-current","page");
-        b.onclick=()=>{st.page=i;render();list.focus({preventScroll:true});scrollTo({top:0})};pg.appendChild(b)}
-      list.appendChild(pg)}
+    if(pages>1){
+      const pg=document.createElement("nav");pg.className="pager";pg.setAttribute("aria-label","Halaman");
+      for(let i=1;i<=pages;i++){
+        const b=document.createElement("button");b.type="button";b.className="btn";b.textContent=i;
+        if(i===st.page)b.setAttribute("aria-current","page");
+        b.onclick=()=>{st.page=i;render();list.focus({preventScroll:true});scrollTo({top:0})};
+        pg.appendChild(b);
+      }
+      list.appendChild(pg);
+    }
   }
   updateStats();
 }
+
 function drawFocus(){
   const list=$("list");list.querySelectorAll(".focuswrap").forEach(n=>n.remove());
   const n=st.ids.length,i=st.idx,q=qById[st.ids[i]];
   const wrap=document.createElement("div");wrap.className="focuswrap";
-  wrap.innerHTML=`<div class="progress"><div class="track" role="progressbar" aria-valuemin="1" aria-valuemax="${n}" aria-valuenow="${i+1}" aria-label="Posisi soal"><span style="width:${(i+1)/n*100}%"></span></div><span class="pos">${i+1} / ${n}</span></div>`;
+
+  // Topic Progress Bar with Blue Fill placed directly above the question
+  const qs=st.ids.map(id=>qById[id]).filter(Boolean);
+  wrap.innerHTML=`
+    <div id="focusTopicProgress" class="focus-summary-box">
+      ${focusSummaryHtml(qs,q)}
+    </div>
+    <div class="progress">
+      <div class="track" role="progressbar" aria-valuemin="1" aria-valuemax="${n}" aria-valuenow="${i+1}" aria-label="Posisi soal">
+        <span style="width:${(i+1)/n*100}%"></span>
+      </div>
+      <span class="pos">${i+1} / ${n}</span>
+    </div>
+  `;
+  bindRedoWrong(wrap.querySelector("#focusTopicProgress"));
+
   const{el,api}=card(q);wrap.appendChild(el);st.active=api;
   const nav=document.createElement("div");nav.className="focusnav sticky";
-  nav.innerHTML=`<button type="button" class="btn" id="prev"${i?"":" disabled"}>${icon("left")}Previous page</button>
+  nav.innerHTML=`<button type="button" class="btn" id="prev"${i?"":" disabled"}><svg class="i" aria-hidden="true"><use href="#i-left"/></svg>Previous page</button>
     <span class="hint hide-sm"><span><span class="kbd">Enter</span> Check</span><span><span class="kbd">→</span> lanjut</span><span><span class="kbd">?</span> bantuan</span></span>
-    <button type="button" class="btn primary" id="next"${i<n-1?"":" disabled"}>Next page${icon("right")}</button>`;
+    <button type="button" class="btn primary" id="next"${i<n-1?"":" disabled"}>Next page<svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button>`;
   wrap.appendChild(nav);list.appendChild(wrap);
   $("prev").onclick=()=>go(-1);$("next").onclick=()=>go(1);
   if(EXAM&&phase()==="attempt"&&i===n-1){const b=$("next");b.disabled=false;b.textContent="Finish attempt ...";b.onclick=showSummary}
